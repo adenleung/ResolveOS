@@ -1,82 +1,62 @@
 # ResolveOS
 
-ResolveOS is a modular monolith for synthetic banking operations. Phases 1-8 implement observed events, detection, classification, correlation, durable orchestration, restricted investigators and independent Supervisor review. Controls/remediation and Phases 9-14 remain unfinished; the frontend is excluded.
+Synthetic banking operations prototype: modular FastAPI monolith, PostgreSQL,
+versioned APIs, durable fenced workers, deterministic controls, separate human
+action approvals, confirmation-only execution, independent verification and
+reviewed historical memory. Phases 1?13 are implemented. The authorized recovery
+build continues through separately validated Phases 14 and 15.
 
-AI tests use deterministic fake models. Live OpenAI execution is disabled by
-default and has not been tested against the real provider. PostgreSQL regression
-and fresh migration verification: `py verify_backend.py`; targeted Supervisor
-tests: `py verify_backend.py --targeted --phase 8`. See CURRENT_STATE.md for
-verified results and PHASE9_CONTRACTS.md to resume development.
+Phase 12 found inadequate ML data; no trained model is operational. Phase 13 adds
+protected read-only operational intelligence. See CURRENT_STATE.md and the phase
+acceptance reports for exact results and limitations. No live banking, real customer
+data or paid LLM calls are used. Production identity/tenancy and distributed failover
+are not claimed.
 
-## Stack
+## Backend setup
 
-- Python 3.11+
-- FastAPI
-- SQLAlchemy 2.x
-- Alembic
-- PostgreSQL-ready configuration
-- Pytest
-- Docker Compose for local Postgres
+Use Python 3.11+ (on this machine the executable is
+`C:\Users\adenl\AppData\Local\Programs\Python\Python313\python.exe`).
+Install `requirements.txt`, start PostgreSQL with `docker compose up -d postgres`,
+and copy `.env.example` to an ignored `.env`. Never commit environment secrets.
+For a fresh database, apply migrations with `python -m alembic upgrade head`.
+An existing development database requires a verified backup before any new migration;
+never reset, truncate or downgrade development for tests.
 
-## Quick start
-
-1. Create a virtual environment.
-2. Install dependencies:
-   ```bash
-   py -m pip install -r requirements.txt
-   ```
-3. Copy the sample environment file:
-   ```bash
-   copy .env.example .env
-   ```
-4. Apply migrations, then run the app:
-   ```bash
-   py -m alembic upgrade head
-   uvicorn app.main:app --reload
-   ```
-5. Validate health checks:
-   ```text
-   http://localhost:8000/health
-   http://localhost:8000/api/v1/health
-   http://localhost:8000/ready
-   ```
-
-## Local PostgreSQL
-
-The repository includes a Docker Compose configuration for a local Postgres instance:
-
-```bash
-docker compose up -d postgres
+```powershell
+python -m uvicorn app.main:app --host 127.0.0.1 --port 8000
+python -m app.orchestration.worker --poll
 ```
 
-## Testing
+The worker is an explicit trusted process; live AI providers stay disabled by default.
+Unavailable handlers remain WAITING_HANDLER rather than fabricating findings.
+Health: `/health`, `/ready`. API documentation: `/docs`.
 
-```bash
-py -m pytest -q
+## Local protected APIs
+
+For synthetic local use only, set `APP_ENV=development`,
+`ORCHESTRATION_DEV_AUTH_ENABLED=true`, and distinct WORKER/REVIEWER token secrets
+of at least 24 characters using the `.env.example` names. Send the correct token
+in `Authorization: Bearer ...`. Development identity is refused in production.
+Reviewer workflow approval is distinct from action-bound approval and execution.
+
+Operational intelligence reads:
+
+- GET `/api/v1/intelligence/report` (optional start/end/case_limit).
+- GET `/api/v1/intelligence/incidents/{incident_id}/relationships`.
+
+Reports have explicit cohort windows, query/reference caps, truncation and evidence
+references. Incomplete durations are not completed samples; hypotheses are not
+proved causes. Current SLA exposure is not a reconstructed historical breach rate.
+
+## PostgreSQL verification
+
+```powershell
+python verify_backend.py --report regression-results.xml
+python verify_backend.py --targeted --phase 13 --report phase13-targeted-results.xml
 ```
 
-## Notes
-
-Development stops after Phase 6. AI investigators, Supervisor, controls/authorization, banking remediation, ML and frontend remain deferred.
-
-## Durable orchestration
-
-```bash
-py -m app.orchestration.worker --poll --once
-py -m app.orchestration.worker --poll
-```
-
-The CLI is a trusted local database process. It handles classification, routing, re-evaluation and SLA checks; future tasks remain `WAITING_HANDLER` without fabricated success.
-
-HTTP orchestration/review access is disabled by default. For local use, set `ORCHESTRATION_DEV_AUTH_ENABLED=true`, configure distinct `ORCHESTRATION_DEV_WORKER_TOKEN` and `ORCHESTRATION_DEV_REVIEWER_TOKEN` secrets of at least 24 characters, and use `APP_ENV=development` or `test`. Send `Authorization: Bearer ...` with the appropriate secret. Production use of this identity mechanism is refused. Do not commit real secrets.
-
-For a full PostgreSQL regression against a fresh isolated database, including migration downgrade/upgrade:
-
-```bash
-py verify_phase6.py
-```
-
-The configured database role needs temporary database creation permission. The script deletes its own verification database on success and retains it on failure. Results are written to `phase6-test-results.xml` and `phase6-workload-results.json`. Regular `pytest` requires PostgreSQL `DATABASE_URL` in the process environment to run integration tests.
-
-See ARCHITECTURE.md for endpoints, leases and operational limits; PHASE7_CONTRACTS.md for investigator contracts.
-# ResolveOS
+Set DATABASE_URL to the local administrative development connection in the process
+environment. The verifier creates its own disposable database, migrates and checks
+round trips, runs tests, then removes that database on success. Never run destructive
+integration fixtures directly against development. Existing Phase 9?12 safety tests
+remain required. The PostgreSQL role needs temporary database creation permission.

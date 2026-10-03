@@ -1,5 +1,17 @@
 # ResolveOS Architecture
 
+## Phase 13 operational intelligence
+
+`app/intelligence` reads existing normalized evidence, assessments, durable task
+history, investigations, independent verifications, approvals and incident history.
+Typed protected `/api/v1/intelligence` reports use read-only PostgreSQL transactions,
+bounded case/record/reference cohorts and explicit truncation. No simulator label
+tables, model provider or new database schema is used. Hypotheses are advisory
+associations, never causation or authorization. Completed duration medians exclude
+incomplete/future/invalid intervals; verified resolution requires the independent
+execution/verification chain. Current status/SLA projections are labelled separately
+from measured historical intervals. See PHASE13_ACCEPTANCE.md.
+
 ## Phase 12 offline ML evaluation and governance
 
 `app/ml` is an isolated offline evaluation package. Operational classification,

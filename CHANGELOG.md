@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.13.0 - 2026-10-04
+
+- Recovered and freshly verified the complete Phase 12 checkpoint; newer reported
+  commits and frontend source were unavailable.
+- Added protected, typed, bounded read-only recurring-exception, bottleneck,
+  hypothesis, prevention and incident-relationship analytics over actual evidence.
+- Added 21 PostgreSQL tests; no operational schema, source writes, model authority
+  or existing safety assertions changed. See PHASE13_ACCEPTANCE.md.
+
 ## 0.12.0 - 2026-10-04
 
 - Added read-only actual-data readiness audit, strict point-in-time numeric feature

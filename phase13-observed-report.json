@@ -1,0 +1,331 @@
+{
+  "version": "operational-intelligence-1.0",
+  "generated_at": "2026-10-03T21:24:21.930472Z",
+  "window_start": "2026-09-03T21:24:21.930472Z",
+  "window_end": "2026-10-03T21:24:21.930472Z",
+  "case_count": 22,
+  "truncated": false,
+  "limits": {
+    "cases": 500,
+    "rows_per_kind": 2000,
+    "references_per_finding": 20
+  },
+  "overview": {
+    "open_cases": 22,
+    "awaiting_human": 0,
+    "verified_resolutions": 0,
+    "sla_overdue_current": 2,
+    "exceptions": 2,
+    "priority_critical": 0,
+    "priority_high": 2,
+    "priority_medium": 16,
+    "priority_low": 4
+  },
+  "categories": [
+    {
+      "key": "API_PROCESSING_FAILURE",
+      "count": 2,
+      "case_ids": [
+        "case-10effb014f75288e1d1b38f2",
+        "case-460a0c0b343df11dfbd57ac3"
+      ],
+      "references": [
+        {
+          "kind": "assessment",
+          "id": "2f04f353-ca70-4c9f-b17c-b40d14f81821",
+          "case_id": "case-10effb014f75288e1d1b38f2"
+        },
+        {
+          "kind": "assessment",
+          "id": "5810c6bf-967e-453f-b26e-08f4a7a58eb7",
+          "case_id": "case-460a0c0b343df11dfbd57ac3"
+        }
+      ],
+      "method": "Latest recorded classification per exception at window end; categories may overlap; unclassified is explicit.",
+      "limitation": "Bounded cohort; up to 20 evidence references displayed. Counts are observations, not proof of independent common causes."
+    }
+  ],
+  "systems": [
+    {
+      "key": "api_gateway:/payments",
+      "count": 2,
+      "case_ids": [
+        "case-10effb014f75288e1d1b38f2",
+        "case-460a0c0b343df11dfbd57ac3"
+      ],
+      "references": [
+        {
+          "kind": "event",
+          "id": "d3c0b5c9-f121-45b2-9014-20db57342079",
+          "case_id": "case-460a0c0b343df11dfbd57ac3"
+        },
+        {
+          "kind": "event",
+          "id": "eec2d015-de35-47f3-bacf-06093c6b4dd4",
+          "case_id": "case-10effb014f75288e1d1b38f2"
+        }
+      ],
+      "method": "Distinct linked exception IDs per observed system/endpoint; not independent incident counts.",
+      "limitation": "Bounded cohort; up to 20 evidence references displayed. Counts are observations, not proof of independent common causes."
+    }
+  ],
+  "recurrences": [],
+  "bottlenecks": [
+    {
+      "key": "detection_to_classification",
+      "completed": 2,
+      "incomplete": 0,
+      "invalid_order": 0,
+      "median_seconds": 0.1475905,
+      "maximum_seconds": 0.158703,
+      "references": [
+        {
+          "kind": "exception",
+          "id": "exception-10effb014f75288e1d1b38f2",
+          "case_id": "case-10effb014f75288e1d1b38f2"
+        },
+        {
+          "kind": "exception",
+          "id": "exception-460a0c0b343df11dfbd57ac3",
+          "case_id": "case-460a0c0b343df11dfbd57ac3"
+        }
+      ],
+      "method": "Per observation interval; completed pairs only. Parallel attempts are not added together; missing/future ends are incomplete."
+    },
+    {
+      "key": "investigation_queue_wait",
+      "completed": 0,
+      "incomplete": 0,
+      "invalid_order": 0,
+      "median_seconds": null,
+      "maximum_seconds": null,
+      "references": [],
+      "method": "Per observation interval; completed pairs only. Parallel attempts are not added together; missing/future ends are incomplete."
+    },
+    {
+      "key": "investigation_attempt_duration",
+      "completed": 0,
+      "incomplete": 0,
+      "invalid_order": 0,
+      "median_seconds": null,
+      "maximum_seconds": null,
+      "references": [],
+      "method": "Per observation interval; completed pairs only. Parallel attempts are not added together; missing/future ends are incomplete."
+    },
+    {
+      "key": "human_action_approval_wait",
+      "completed": 0,
+      "incomplete": 0,
+      "invalid_order": 0,
+      "median_seconds": null,
+      "maximum_seconds": null,
+      "references": [],
+      "method": "Per observation interval; completed pairs only. Parallel attempts are not added together; missing/future ends are incomplete."
+    },
+    {
+      "key": "execution_to_verification",
+      "completed": 0,
+      "incomplete": 0,
+      "invalid_order": 0,
+      "median_seconds": null,
+      "maximum_seconds": null,
+      "references": [],
+      "method": "Per observation interval; completed pairs only. Parallel attempts are not added together; missing/future ends are incomplete."
+    },
+    {
+      "key": "execution_queue_to_effect",
+      "completed": 0,
+      "incomplete": 0,
+      "invalid_order": 0,
+      "median_seconds": null,
+      "maximum_seconds": null,
+      "references": [],
+      "method": "Per observation interval; completed pairs only. Parallel attempts are not added together; missing/future ends are incomplete."
+    },
+    {
+      "key": "effect_to_independent_verification",
+      "completed": 0,
+      "incomplete": 0,
+      "invalid_order": 0,
+      "median_seconds": null,
+      "maximum_seconds": null,
+      "references": [],
+      "method": "Per observation interval; completed pairs only. Parallel attempts are not added together; missing/future ends are incomplete."
+    },
+    {
+      "key": "total_independently_verified_resolution",
+      "completed": 0,
+      "incomplete": 22,
+      "invalid_order": 0,
+      "median_seconds": null,
+      "maximum_seconds": null,
+      "references": [
+        {
+          "kind": "case",
+          "id": "pg-case-84d43b58c1a94511930804de829a8cbc",
+          "case_id": "pg-case-84d43b58c1a94511930804de829a8cbc"
+        },
+        {
+          "kind": "case",
+          "id": "pg-case-audit-235a52adbd9d4537b74f5c5c8dd72604",
+          "case_id": "pg-case-audit-235a52adbd9d4537b74f5c5c8dd72604"
+        },
+        {
+          "kind": "case",
+          "id": "pg-case-c475c6b778a647ed84e3e2e437a23328",
+          "case_id": "pg-case-c475c6b778a647ed84e3e2e437a23328"
+        },
+        {
+          "kind": "case",
+          "id": "pg-case-audit-ad1b77fed73c4ae593c959d52f777b5b",
+          "case_id": "pg-case-audit-ad1b77fed73c4ae593c959d52f777b5b"
+        },
+        {
+          "kind": "case",
+          "id": "pg-case-f49c941ff1f04077bf5fd14460eb32c0",
+          "case_id": "pg-case-f49c941ff1f04077bf5fd14460eb32c0"
+        },
+        {
+          "kind": "case",
+          "id": "pg-case-audit-1604f70150084ef6bcf28adc1d9ed0b0",
+          "case_id": "pg-case-audit-1604f70150084ef6bcf28adc1d9ed0b0"
+        },
+        {
+          "kind": "case",
+          "id": "pg-case-c6b6558661fb4286bc9e60b801f182ca",
+          "case_id": "pg-case-c6b6558661fb4286bc9e60b801f182ca"
+        },
+        {
+          "kind": "case",
+          "id": "pg-case-audit-da18089a16b84407becf0be8da209e72",
+          "case_id": "pg-case-audit-da18089a16b84407becf0be8da209e72"
+        },
+        {
+          "kind": "case",
+          "id": "pg-case-26da8bbc39bc41228acbabc1e0fdf431",
+          "case_id": "pg-case-26da8bbc39bc41228acbabc1e0fdf431"
+        },
+        {
+          "kind": "case",
+          "id": "pg-case-audit-1105eadf52844bf894cfe17edcce60af",
+          "case_id": "pg-case-audit-1105eadf52844bf894cfe17edcce60af"
+        },
+        {
+          "kind": "case",
+          "id": "pg-case-34c2d65486eb41ea950cf760f8dd4b08",
+          "case_id": "pg-case-34c2d65486eb41ea950cf760f8dd4b08"
+        },
+        {
+          "kind": "case",
+          "id": "pg-case-audit-9ae54ffd7aeb4b2785c8cd464517b96b",
+          "case_id": "pg-case-audit-9ae54ffd7aeb4b2785c8cd464517b96b"
+        },
+        {
+          "kind": "case",
+          "id": "pg-case-3b9bdb72b6cb41ac884876c12f731f15",
+          "case_id": "pg-case-3b9bdb72b6cb41ac884876c12f731f15"
+        },
+        {
+          "kind": "case",
+          "id": "pg-case-audit-a44d42f297df48d097b5a41f37318e15",
+          "case_id": "pg-case-audit-a44d42f297df48d097b5a41f37318e15"
+        },
+        {
+          "kind": "case",
+          "id": "pg-case-21e39a2bdac04e50bbd30cc3185cc61c",
+          "case_id": "pg-case-21e39a2bdac04e50bbd30cc3185cc61c"
+        },
+        {
+          "kind": "case",
+          "id": "pg-case-audit-bd631fae1b234c38bc7b89c7b2c5ac10",
+          "case_id": "pg-case-audit-bd631fae1b234c38bc7b89c7b2c5ac10"
+        },
+        {
+          "kind": "case",
+          "id": "phase4-case-fd24233f86564fc69f6cb4615b1df251",
+          "case_id": "phase4-case-fd24233f86564fc69f6cb4615b1df251"
+        },
+        {
+          "kind": "case",
+          "id": "phase4-case-c9ffeed92f364d97a1dc7642bb2a0cd7",
+          "case_id": "phase4-case-c9ffeed92f364d97a1dc7642bb2a0cd7"
+        },
+        {
+          "kind": "case",
+          "id": "phase4-case-a72b47ade34a49c6a55fd2968c5f6d80",
+          "case_id": "phase4-case-a72b47ade34a49c6a55fd2968c5f6d80"
+        },
+        {
+          "kind": "case",
+          "id": "phase4-case-498c59c09f154cb6b9b989149f3084ec",
+          "case_id": "phase4-case-498c59c09f154cb6b9b989149f3084ec"
+        }
+      ],
+      "method": "Per observation interval; completed pairs only. Parallel attempts are not added together; missing/future ends are incomplete."
+    }
+  ],
+  "hypotheses": [
+    {
+      "suspected_factor": "Recurring exception observations involving api_gateway:/payments",
+      "supporting_evidence": [
+        {
+          "kind": "event",
+          "id": "d3c0b5c9-f121-45b2-9014-20db57342079",
+          "case_id": "case-460a0c0b343df11dfbd57ac3"
+        },
+        {
+          "kind": "event",
+          "id": "eec2d015-de35-47f3-bacf-06093c6b4dd4",
+          "case_id": "case-10effb014f75288e1d1b38f2"
+        }
+      ],
+      "contradictory_evidence": [],
+      "affected_cases": [
+        "case-10effb014f75288e1d1b38f2",
+        "case-460a0c0b343df11dfbd57ac3"
+      ],
+      "missing_information": [
+        "Independent causal attribution",
+        "Complete service denominator and health history"
+      ],
+      "next_step": "Inspect linked current observations and compare affected/unaffected requests; validate dependency history.",
+      "confidence_limitation": "Repeated association is not proven common causation. Successful requests may coexist; cohort and reference caps apply."
+    }
+  ],
+  "prevention": [
+    {
+      "suspected_factor": "Recurring exception observations involving api_gateway:/payments",
+      "supporting_evidence": [
+        {
+          "kind": "event",
+          "id": "d3c0b5c9-f121-45b2-9014-20db57342079",
+          "case_id": "case-460a0c0b343df11dfbd57ac3"
+        },
+        {
+          "kind": "event",
+          "id": "eec2d015-de35-47f3-bacf-06093c6b4dd4",
+          "case_id": "case-10effb014f75288e1d1b38f2"
+        }
+      ],
+      "contradictory_evidence": [],
+      "affected_cases": [
+        "case-10effb014f75288e1d1b38f2",
+        "case-460a0c0b343df11dfbd57ac3"
+      ],
+      "missing_information": [
+        "Independent causal attribution",
+        "Complete service denominator and health history"
+      ],
+      "next_step": "Inspect linked current observations and compare affected/unaffected requests; validate dependency history.",
+      "confidence_limitation": "Repeated association is not proven common causation. Successful requests may coexist; cohort and reference caps apply."
+    }
+  ],
+  "limitations": [
+    "Cohort selects cases created in the window; older active cases are outside this report.",
+    "Overview status/priority/SLA fields are current projections, not historical reconstruction.",
+    "Rows and reference lists are bounded. Truncated results are partial and must not be used as population-wide rates.",
+    "Investigator missing-evidence statements are reported claims, not independent proof.",
+    "No historical SLA-breach rate is inferred from mutable current deadlines."
+  ],
+  "action_authorization": "NOT_EVALUATED"
+}

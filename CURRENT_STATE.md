@@ -1,6 +1,17 @@
 # Current State
 
-## Active Phase 12 evaluation checkpoint — 2026-10-04
+## Active Phase 13 recovery build
+
+The accepted Phase 12 backend was recovered at `f0ed616`; neither reported newer
+checkpoint nor frontend files were recoverable. Fresh baseline: 311 PostgreSQL
+tests passed. `app/intelligence` now adds bounded evidence-backed read-only
+analytics, conservative contributing-factor hypotheses, workflow durations and
+incident history. Phase 13 accepted: 21 targeted and 332 full PostgreSQL tests passed;
+all 311 prior tests retained. Exact validation and remote backup
+status are recorded in PHASE13_ACCEPTANCE.md. Development remains at 0012 and
+has not been modified. Phase 14 begins only after Phase 13 is pushed and verified.
+
+## Historical Phase 12 evaluation checkpoint — 2026-10-04
 
 - Offline dataset readiness, point-in-time features, incident/scenario-aware splits,
   experiment metadata and governance are implemented in `app/ml`. Final acceptance

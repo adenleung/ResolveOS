@@ -12,11 +12,11 @@
 - Phase 10: synthetic confirmation replay, independent verification, terminal execution recovery and counterfactual projections (**0011 PostgreSQL accepted**).
 - Phase 11: reviewed operational memory (**0012 PostgreSQL accepted**).
 - Phase 12: dataset-inadequate offline evaluation/governance accepted (311 full / 43 targeted tests); training blocked, trained path unverified, no model enabled. See PHASE12_ACCEPTANCE.md.
-- Phase 13: prevention and analytics (not started).
+- Phase 13: evidence-backed intelligence implemented; acceptance and remote checkpoint in PHASE13_ACCEPTANCE.md.
 - Phase 14: dedicated security/reliability acceptance (incomplete; earlier phases provide partial coverage).
 - Phase 15: frontend (not started; excluded).
 
-Current implementation checkpoint: **Phase 12 dataset-inadequate offline branch**; exact acceptance results are in PHASE12_ACCEPTANCE.md. No supervised operational benchmark performance or benefit is claimed; rules remain active. Prior Phase 11 acceptance was 268 full, 46 targeted memory and 69 safety tests. Source and development Alembic remain `20261004_0012`. Development was read only during Phase 12; no migration required. Stop after Phase 12.
+Current implementation checkpoint: **Phase 13 operational intelligence**; exact acceptance and remote checkpoint status are in PHASE13_ACCEPTANCE.md. Rules remain active; no ML model is enabled. Source and development Alembic remain `20261004_0012`. Development is read only during Phase 13; no migration required. The authorized recovery build continues through Phases 14 and 15, with separate validated commits and pushes.
 
 Scheduling, workflow approval, deterministic action authorization, executed effects and independent verification remain distinct. Current remediation is limited to synthetic confirmation replay and never repeats a monetary transfer.
 
