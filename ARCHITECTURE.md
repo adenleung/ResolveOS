@@ -1,5 +1,17 @@
 # ResolveOS Architecture
 
+## Phase 15 operations workbench
+
+`frontend/` is a strict TypeScript Next.js application with Tailwind, local
+shadcn-style components and Radix primitives. A server-side authenticated proxy
+whitelists protected backend paths and verifies the canonical mutation origin.
+HttpOnly session cookies keep credentials out of browser local storage.
+`app/workbench` provides bounded PostgreSQL read models for cases, evidence,
+investigations, approvals, memory and actual offline ML artifacts. Existing backend
+services alone govern mutations, execution and verification. `app/demo.py` creates
+real synthetic journeys only in a guarded separate database; no frontend data
+fallback, live provider or real bank effect is present. See PHASE15_ACCEPTANCE.md.
+
 ## Phase 14 shadow and recorded replay
 
 `app/reliability` reuses Controls.inspect under PostgreSQL-enforced read-only

@@ -1,6 +1,11 @@
 # ResolveOS Master Build Spec Summary
 
-ResolveOS is a modular-monolith operations platform implementing Phases 1–14, preserving PostgreSQL as its system of record. Phase 12 has no operational ML model. Phase 13 adds evidence-backed read-only intelligence; Phase 14 adds isolated shadow controls, historical replay and telemetry. Exact validation and development migration status are in CURRENT_STATE.md and PHASE14_ACCEPTANCE.md. Phase 15 proceeds only after the Phase 14 remote checkpoint; Phase 16 remains optional future scope.
+Current accepted scope is Phases 1–15. Phase 15 delivers a protected, source-backed
+Next.js operations workbench, guarded human review and three persisted isolated
+demonstrations. See RECOVERY_HANDOFF.md and PHASE15_ACCEPTANCE.md. Optional Phase 16,
+enterprise identity and operational ML remain future work.
+
+ResolveOS is a modular-monolith operations platform implementing Phases 1–15, preserving PostgreSQL as its system of record. Phase 12 has no operational ML model. Phase 13 adds evidence-backed read-only intelligence; Phase 14 adds isolated shadow controls, historical replay and telemetry. Phase 15 adds the protected operations workbench. Exact validation and development migration status are in CURRENT_STATE.md and the phase acceptance reports. Phase 15 was built after the verified Phase 14 remote checkpoint; Phase 16 remains optional future scope.
 
 ## Implemented scope
 

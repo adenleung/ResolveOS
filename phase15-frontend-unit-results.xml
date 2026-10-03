@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="8" failures="0" errors="0" time="0.3273495">
+    <testsuite name="src/components/governance.test.tsx" timestamp="2026-10-03T23:18:36.630Z" hostname="aden" tests="5" failures="0" errors="0" skipped="0" time="0.3212856">
+        <testcase classname="src/components/governance.test.tsx" name="review authority and state &gt; requires a reason and submits only the declared action-bound operation" time="0.2485045">
+        </testcase>
+        <testcase classname="src/components/governance.test.tsx" name="review authority and state &gt; keeps workflow handover distinct from action approval" time="0.0248051">
+        </testcase>
+        <testcase classname="src/components/governance.test.tsx" name="review authority and state &gt; requires a corrected summary for governed memory correction" time="0.0191633">
+        </testcase>
+        <testcase classname="src/components/governance.test.tsx" name="review authority and state &gt; renders explicit denied and empty states" time="0.0217807">
+        </testcase>
+        <testcase classname="src/components/governance.test.tsx" name="review authority and state &gt; never styles an unverified result as verified success" time="0.0043295">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/lib/proxy-policy.test.ts" timestamp="2026-10-03T23:18:36.643Z" hostname="aden" tests="3" failures="0" errors="0" skipped="0" time="0.0060639">
+        <testcase classname="src/lib/proxy-policy.test.ts" name="employee proxy boundary &gt; forwards supported protected reads and approval mutations" time="0.0029881">
+        </testcase>
+        <testcase classname="src/lib/proxy-policy.test.ts" name="employee proxy boundary &gt; refuses simulator, worker claims, traversal, unknown actions and methods" time="0.0005105">
+        </testcase>
+        <testcase classname="src/lib/proxy-policy.test.ts" name="employee proxy boundary &gt; requires an exact browser origin for mutations" time="0.0002822">
+        </testcase>
+    </testsuite>
+</testsuites>

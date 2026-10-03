@@ -1,0 +1,38 @@
+{
+  "node_version": "v24.21.0",
+  "steps": [
+    {
+      "command": "npm run typecheck",
+      "exit_code": 0,
+      "seconds": 3.17,
+      "output_sha256": "d0aabcf054e51a48a597493a16d69a98f416ea1a291b44425e9f3fc840077123"
+    },
+    {
+      "command": "npm run lint",
+      "exit_code": 0,
+      "seconds": 4.432,
+      "output_sha256": "a8044f16afa02713987ad949af88b99b5186b98af5838e13cd70f480a2a11120"
+    },
+    {
+      "command": "npm run test",
+      "exit_code": 0,
+      "seconds": 4.111,
+      "output_sha256": "e362f74f94a1b703e24b6b198c60e6b9b462aa6005692a32e9972633dc2124ba"
+    },
+    {
+      "command": "npm run build",
+      "exit_code": 0,
+      "seconds": 24.531,
+      "output_sha256": "9eb0f9ccf9bc0ba156a287a53f96b3470e1d79640f99f6f5fd2bad8b233819bc"
+    }
+  ],
+  "dependency_audit": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  },
+  "production_build": "Next.js production webpack build; no external fonts or telemetry"
+}

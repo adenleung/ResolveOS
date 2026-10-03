@@ -42,6 +42,12 @@ htmlcov/
 .idea/
 .vscode/
 node_modules/
+.tools/
+.next/
+playwright-report/
+test-results/
+*.tsbuildinfo
+demo-manifest.local.json
 *.pyc
 *.pyo
 *.log

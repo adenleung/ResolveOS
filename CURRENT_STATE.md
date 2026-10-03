@@ -1,6 +1,18 @@
 # Current State
 
-## Active Phase 14 recovery build
+## Accepted Phase 15 recovery build
+
+Phases 13–15 are implemented and separately validated. Phase 14 was remotely
+verified at `6095349df3f18ec76f2e73d52e4155d3e3c199c8` before Phase 15 started.
+Phase 15 adds the protected nine-module Next.js operations workbench and three
+real persisted isolated demonstrations. Acceptance: 4 targeted and 354 full
+PostgreSQL tests, 8 frontend unit tests and 9 production browser checks passed;
+type checking, lint and build passed, with zero dependency vulnerabilities.
+Development is at `20261004_0013`, with all 44 application tables and 76 rows
+unchanged through demo creation. No trained ML model is operational.
+See PHASE15_ACCEPTANCE.md and RECOVERY_HANDOFF.md for source, commands and limits.
+
+## Historical Phase 14 recovery checkpoint
 
 Phase 13 was accepted and remotely verified at
 `ba0367d46260b9195b1506ebfb79a973ad98465b` before Phase 14 began.

@@ -1,0 +1,39 @@
+{
+  "database": "resolveos_demo_755309e62f",
+  "provider": "offline deterministic demo over actual source evidence; no external calls",
+  "journeys": {
+    "A": {
+      "case_id": "case-d4faac7cf4844e89dd071411",
+      "exception_id": "exception-d4faac7cf4844e89dd071411",
+      "authorization_id": "1eada32e-028e-46b5-b87d-cba037bd4803",
+      "shadow_id": "shadow-16774ee2dcae4ad38349d28f3e9180b3",
+      "simulation_id": "7fea93cf-a858-43f6-90c9-4814ef2ddca8",
+      "expected_state": "RESOLVED",
+      "verification_id": "3bddfef8-0bf1-47a3-9be1-3463adb0ea7d",
+      "memory_version_id": "6c9308f9-9d08-4abd-91b4-d0b7fa7ed464"
+    },
+    "C": {
+      "case_id": "case-adca0c3d7cd537d5ff0be952",
+      "exception_id": "exception-adca0c3d7cd537d5ff0be952",
+      "stale_authorization_id": "ca9e9d1a-b76a-4bf8-a296-a4467920eccf",
+      "authorization_id": "2d9b5c56-f7d6-41ce-bc2b-b19aee31f8fc",
+      "shadow_id": "shadow-0582c19a4b2d404f8853acc830a77be9",
+      "approval_id": "b8a65695-0182-4c6a-b80f-dcca35d54594",
+      "blocked_request_error": "authorization_stale",
+      "expected_control_outcome": "BLOCKED"
+    },
+    "B": {
+      "case_id": "case-c3fafe13835352284a6a692f",
+      "exception_id": "exception-c3fafe13835352284a6a692f",
+      "expected_state": "AWAITING_HUMAN"
+    }
+  },
+  "verified_assertions": {
+    "bank_amounts_unchanged": true,
+    "duplicate_deliveries_deduplicated": true,
+    "duplicate_execution_single_effect": true,
+    "operational_actions": 1,
+    "independent_successes": 1,
+    "development_untouched": true
+  }
+}

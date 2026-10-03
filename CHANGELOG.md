@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.15.0 - 2026-10-04
+
+- Added the nine-module authenticated Next.js operations workbench over actual
+  backend evidence, with source inspection and protected human handover actions.
+- Added guarded isolated demonstrations for verified resolution, conflicting
+  human review and stale-policy blocked execution; preserved development rows.
+- Passed 354 backend, 8 frontend unit and 9 production browser tests, type checking,
+  lint and build, with zero reported npm vulnerabilities. See PHASE15_ACCEPTANCE.md.
+
 ## 0.14.0 - 2026-10-04
 
 - Added PostgreSQL-enforced read-only shadow control inspection, isolated constrained

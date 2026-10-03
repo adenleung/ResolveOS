@@ -1,10 +1,15 @@
 # ResolveOS
 
+Phases 1–15 are implemented. The protected Next.js operations workbench uses
+actual PostgreSQL evidence across nine modules. Start the accepted isolated demo
+using [RECOVERY_HANDOFF.md](RECOVERY_HANDOFF.md); validation is recorded in
+[PHASE15_ACCEPTANCE.md](PHASE15_ACCEPTANCE.md). Final acceptance includes 354
+backend tests, eight frontend unit tests and nine production browser checks.
+
 Synthetic banking operations prototype: modular FastAPI monolith, PostgreSQL,
 versioned APIs, durable fenced workers, deterministic controls, separate human
 action approvals, confirmation-only execution, independent verification and
-reviewed historical memory. Phases 1–14 are implemented. The authorized recovery
-build continues through separately validated Phases 14 and 15.
+reviewed historical memory. Phases 1–15 are implemented and separately validated.
 
 Phase 12 found inadequate ML data; no trained model is operational. Phase 13 adds
 protected read-only operational intelligence. See CURRENT_STATE.md and the phase

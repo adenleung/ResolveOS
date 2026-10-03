@@ -1,0 +1,22 @@
+<testsuites id="" name="" tests="9" failures="0" skipped="0" errors="0" time="11.014484">
+<testsuite name="workbench.spec.ts" timestamp="2026-10-03T23:22:06.028Z" hostname="" tests="9" failures="0" skipped="0" time="9.356" errors="0">
+<testcase name="real overview, accessible navigation and protected session" classname="workbench.spec.ts" time="1.66">
+</testcase>
+<testcase name="actual case filtering, source inspection and independently verified outcome" classname="workbench.spec.ts" time="1.287">
+</testcase>
+<testcase name="human handover assignment persists and has attributed history" classname="workbench.spec.ts" time="0.865">
+</testcase>
+<testcase name="shadow and recorded replay separate hypothesis from independent outcome" classname="workbench.spec.ts" time="0.922">
+</testcase>
+<testcase name="reviewed history and honest offline Model Lab" classname="workbench.spec.ts" time="0.865">
+</testcase>
+<testcase name="worker cannot review approvals and the proxy rejects foreign-origin mutations" classname="workbench.spec.ts" time="0.605">
+</testcase>
+<testcase name="unsafe approved action remains blocked after the policy changes" classname="workbench.spec.ts" time="0.942">
+</testcase>
+<testcase name="failed backend request remains an explicit failure with no invented metrics" classname="workbench.spec.ts" time="0.719">
+</testcase>
+<testcase name="mobile case centre retains accessible navigation and real records" classname="workbench.spec.ts" time="1.491">
+</testcase>
+</testsuite>
+</testsuites>

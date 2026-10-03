@@ -14,18 +14,18 @@
 - Phase 12: dataset-inadequate offline evaluation/governance accepted (311 full / 43 targeted tests); training blocked, trained path unverified, no model enabled. See PHASE12_ACCEPTANCE.md.
 - Phase 13: evidence-backed intelligence implemented; acceptance and remote checkpoint in PHASE13_ACCEPTANCE.md.
 - Phase 14: shadow isolation, recorded decision replay, outcome comparison and reliability telemetry; validation in PHASE14_ACCEPTANCE.md.
-- Phase 15: frontend (not started; excluded).
+- Phase 15: protected nine-module operations workbench and three persisted isolated demos accepted; see PHASE15_ACCEPTANCE.md.
 
-Current implementation checkpoint: **Phase 14 shadow and reliability**; exact acceptance, migration and remote checkpoint status are in PHASE14_ACCEPTANCE.md. Rules remain active; no ML model is enabled. Source Alembic is `20261004_0013`; development upgrade requires verified backup restoration and unchanged source-row hashes. The authorized recovery build continues through Phase 15 after the separate validated Phase 14 commit and push.
+Current implementation checkpoint: **Phase 15 operations workbench**; exact acceptance, migration and remote checkpoint status are in PHASE14_ACCEPTANCE.md. Rules remain active; no ML model is enabled. Source Alembic is `20261004_0013`; development upgrade requires verified backup restoration and unchanged source-row hashes. Phase 15 was built after the separately validated, pushed and verified Phase 14 checkpoint.
 
 Scheduling, workflow approval, deterministic action authorization, executed effects and independent verification remain distinct. Current remediation is limited to synthetic confirmation replay and never repeats a monetary transfer.
 
 ## Expanded feature roadmap (PLANNED, not implemented)
 
 - Phase 12 follow-up within evaluated scope: adequate reviewed datasets and an environment permitting optional ML libraries are needed for real model comparisons; any integration requires separate evidence and approval.
-- Phase 13: evidence-backed root-cause hypotheses, process mining, case dependency visualization and approved improvement tracking.
+- Phase 13 future extension: approved improvement tracking and deeper process mining.
 - Phase 14 future extension: production identity/tenancy and distributed failover verification; operational model routing remains unavailable.
-- Phase 15: enterprise operations dashboard, evidence-linked human handover and interactive what-if visualization using persisted hypothetical reports.
+- Phase 15 future extension: enterprise identity and deployment hardening; the protected synthetic workbench is implemented.
 - Optional Phase 16: Pixel Agents visualization, strictly mirroring real backend state.
 
 These are future phases. No Phase 11–16 work was implemented in the Phase 10 extension.
