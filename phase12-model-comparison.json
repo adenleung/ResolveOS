@@ -1,0 +1,422 @@
+{
+  "classification": {
+    "baseline": {
+      "status": "BLOCKED_DATASET"
+    },
+    "business_value": {
+      "escalation_correctness": null,
+      "human_reviews": null,
+      "investigation_duration": null,
+      "llm_calls_avoided": null,
+      "specialist_calls_per_case": null
+    },
+    "dataset_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "dataset_version": "synthetic-evaluation-1.0",
+    "decision": "RETAIN_DETERMINISTIC",
+    "dependencies": {
+      "joblib": null,
+      "lightgbm": null,
+      "numpy": null,
+      "python": "3.13.15",
+      "scikit-learn": null,
+      "scipy": null,
+      "threadpoolctl": null,
+      "xgboost": null
+    },
+    "feature_version": "observed-intake-1.0",
+    "hardware": {
+      "logical_cpu_count": 16,
+      "machine": "AMD64",
+      "platform": "Windows-11-10.0.26200-SP0"
+    },
+    "models": {
+      "decision_tree": {
+        "available": false,
+        "status": "BLOCKED_DATASET"
+      },
+      "lightgbm": {
+        "available": false,
+        "status": "BLOCKED_DATASET"
+      },
+      "logistic_regression": {
+        "available": false,
+        "status": "BLOCKED_DATASET"
+      },
+      "random_forest": {
+        "available": false,
+        "status": "BLOCKED_DATASET"
+      },
+      "xgboost": {
+        "available": false,
+        "status": "BLOCKED_DATASET"
+      }
+    },
+    "operational_enabled": false,
+    "policy": {
+      "maximum_artifact_bytes": 10000000,
+      "maximum_critical_error_increase": 0,
+      "maximum_p95_latency_ms": 50,
+      "minimum_critical_recall": 0.95,
+      "minimum_macro_f1_gain": 0.03,
+      "requires_group_holdout": true,
+      "requires_human_approval": true,
+      "requires_measured_operational_benefit": true,
+      "requires_no_critical_error_increase": true,
+      "requires_positive_family_bootstrap_lower_gain": true,
+      "version": "ml-acceptance-1.0"
+    },
+    "readiness": {
+      "blocking_reasons": [
+        "fewer_than_two_label_classes",
+        "fewer_than_30_independent_families_per_class"
+      ],
+      "class_distribution": {},
+      "duplicate_feature_rows": 0,
+      "incident_families": 0,
+      "independent_families_per_class": {},
+      "ready": false,
+      "usable_rows": 0
+    },
+    "seed": 12,
+    "split_strategy": "incident_family_holdout",
+    "splits": null,
+    "task": "classification",
+    "unknown_handling": "Held-out labels absent from training are rejected. Experimental estimators have no validated abstention policy; operational integration is disabled."
+  },
+  "correlation": {
+    "baseline": {
+      "status": "BLOCKED_DATASET"
+    },
+    "business_value": {
+      "escalation_correctness": null,
+      "human_reviews": null,
+      "investigation_duration": null,
+      "llm_calls_avoided": null,
+      "specialist_calls_per_case": null
+    },
+    "dataset_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "dataset_version": "synthetic-evaluation-1.0",
+    "decision": "RETAIN_DETERMINISTIC",
+    "dependencies": {
+      "joblib": null,
+      "lightgbm": null,
+      "numpy": null,
+      "python": "3.13.15",
+      "scikit-learn": null,
+      "scipy": null,
+      "threadpoolctl": null,
+      "xgboost": null
+    },
+    "feature_version": "observed-intake-1.0",
+    "hardware": {
+      "logical_cpu_count": 16,
+      "machine": "AMD64",
+      "platform": "Windows-11-10.0.26200-SP0"
+    },
+    "models": {
+      "decision_tree": {
+        "available": false,
+        "status": "BLOCKED_DATASET"
+      },
+      "lightgbm": {
+        "available": false,
+        "status": "BLOCKED_DATASET"
+      },
+      "logistic_regression": {
+        "available": false,
+        "status": "BLOCKED_DATASET"
+      },
+      "random_forest": {
+        "available": false,
+        "status": "BLOCKED_DATASET"
+      },
+      "xgboost": {
+        "available": false,
+        "status": "BLOCKED_DATASET"
+      }
+    },
+    "operational_enabled": false,
+    "policy": {
+      "maximum_artifact_bytes": 10000000,
+      "maximum_critical_error_increase": 0,
+      "maximum_p95_latency_ms": 50,
+      "minimum_critical_recall": 0.95,
+      "minimum_macro_f1_gain": 0.03,
+      "requires_group_holdout": true,
+      "requires_human_approval": true,
+      "requires_measured_operational_benefit": true,
+      "requires_no_critical_error_increase": true,
+      "requires_positive_family_bootstrap_lower_gain": true,
+      "version": "ml-acceptance-1.0"
+    },
+    "readiness": {
+      "blocking_reasons": [
+        "fewer_than_two_label_classes",
+        "fewer_than_30_independent_families_per_class"
+      ],
+      "class_distribution": {},
+      "duplicate_feature_rows": 0,
+      "incident_families": 0,
+      "independent_families_per_class": {},
+      "ready": false,
+      "usable_rows": 0
+    },
+    "seed": 12,
+    "split_strategy": "incident_family_holdout",
+    "splits": null,
+    "task": "correlation",
+    "unknown_handling": "Held-out labels absent from training are rejected. Experimental estimators have no validated abstention policy; operational integration is disabled."
+  },
+  "risk": {
+    "baseline": {
+      "status": "BLOCKED_DATASET"
+    },
+    "business_value": {
+      "escalation_correctness": null,
+      "human_reviews": null,
+      "investigation_duration": null,
+      "llm_calls_avoided": null,
+      "specialist_calls_per_case": null
+    },
+    "dataset_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "dataset_version": "synthetic-evaluation-1.0",
+    "decision": "RETAIN_DETERMINISTIC",
+    "dependencies": {
+      "joblib": null,
+      "lightgbm": null,
+      "numpy": null,
+      "python": "3.13.15",
+      "scikit-learn": null,
+      "scipy": null,
+      "threadpoolctl": null,
+      "xgboost": null
+    },
+    "feature_version": "observed-intake-1.0",
+    "hardware": {
+      "logical_cpu_count": 16,
+      "machine": "AMD64",
+      "platform": "Windows-11-10.0.26200-SP0"
+    },
+    "models": {
+      "decision_tree": {
+        "available": false,
+        "status": "BLOCKED_DATASET"
+      },
+      "lightgbm": {
+        "available": false,
+        "status": "BLOCKED_DATASET"
+      },
+      "logistic_regression": {
+        "available": false,
+        "status": "BLOCKED_DATASET"
+      },
+      "random_forest": {
+        "available": false,
+        "status": "BLOCKED_DATASET"
+      },
+      "xgboost": {
+        "available": false,
+        "status": "BLOCKED_DATASET"
+      }
+    },
+    "operational_enabled": false,
+    "policy": {
+      "maximum_artifact_bytes": 10000000,
+      "maximum_critical_error_increase": 0,
+      "maximum_p95_latency_ms": 50,
+      "minimum_critical_recall": 0.95,
+      "minimum_macro_f1_gain": 0.03,
+      "requires_group_holdout": true,
+      "requires_human_approval": true,
+      "requires_measured_operational_benefit": true,
+      "requires_no_critical_error_increase": true,
+      "requires_positive_family_bootstrap_lower_gain": true,
+      "version": "ml-acceptance-1.0"
+    },
+    "readiness": {
+      "blocking_reasons": [
+        "fewer_than_two_label_classes",
+        "fewer_than_30_independent_families_per_class"
+      ],
+      "class_distribution": {},
+      "duplicate_feature_rows": 0,
+      "incident_families": 0,
+      "independent_families_per_class": {},
+      "ready": false,
+      "usable_rows": 0
+    },
+    "seed": 12,
+    "split_strategy": "incident_family_holdout",
+    "splits": null,
+    "task": "risk",
+    "unknown_handling": "Held-out labels absent from training are rejected. Experimental estimators have no validated abstention policy; operational integration is disabled."
+  },
+  "routing": {
+    "baseline": {
+      "status": "BLOCKED_DATASET"
+    },
+    "business_value": {
+      "escalation_correctness": null,
+      "human_reviews": null,
+      "investigation_duration": null,
+      "llm_calls_avoided": null,
+      "specialist_calls_per_case": null
+    },
+    "dataset_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "dataset_version": "synthetic-evaluation-1.0",
+    "decision": "RETAIN_DETERMINISTIC",
+    "dependencies": {
+      "joblib": null,
+      "lightgbm": null,
+      "numpy": null,
+      "python": "3.13.15",
+      "scikit-learn": null,
+      "scipy": null,
+      "threadpoolctl": null,
+      "xgboost": null
+    },
+    "feature_version": "observed-intake-1.0",
+    "hardware": {
+      "logical_cpu_count": 16,
+      "machine": "AMD64",
+      "platform": "Windows-11-10.0.26200-SP0"
+    },
+    "models": {
+      "decision_tree": {
+        "available": false,
+        "status": "BLOCKED_DATASET"
+      },
+      "lightgbm": {
+        "available": false,
+        "status": "BLOCKED_DATASET"
+      },
+      "logistic_regression": {
+        "available": false,
+        "status": "BLOCKED_DATASET"
+      },
+      "random_forest": {
+        "available": false,
+        "status": "BLOCKED_DATASET"
+      },
+      "xgboost": {
+        "available": false,
+        "status": "BLOCKED_DATASET"
+      }
+    },
+    "operational_enabled": false,
+    "policy": {
+      "maximum_artifact_bytes": 10000000,
+      "maximum_critical_error_increase": 0,
+      "maximum_p95_latency_ms": 50,
+      "minimum_critical_recall": 0.95,
+      "minimum_macro_f1_gain": 0.03,
+      "requires_group_holdout": true,
+      "requires_human_approval": true,
+      "requires_measured_operational_benefit": true,
+      "requires_no_critical_error_increase": true,
+      "requires_positive_family_bootstrap_lower_gain": true,
+      "version": "ml-acceptance-1.0"
+    },
+    "readiness": {
+      "blocking_reasons": [
+        "fewer_than_two_label_classes",
+        "fewer_than_30_independent_families_per_class"
+      ],
+      "class_distribution": {},
+      "duplicate_feature_rows": 0,
+      "incident_families": 0,
+      "independent_families_per_class": {},
+      "ready": false,
+      "usable_rows": 0
+    },
+    "seed": 12,
+    "split_strategy": "incident_family_holdout",
+    "splits": null,
+    "task": "routing",
+    "unknown_handling": "Held-out labels absent from training are rejected. Experimental estimators have no validated abstention policy; operational integration is disabled."
+  },
+  "sla": {
+    "baseline": {
+      "status": "BLOCKED_DATASET"
+    },
+    "business_value": {
+      "escalation_correctness": null,
+      "human_reviews": null,
+      "investigation_duration": null,
+      "llm_calls_avoided": null,
+      "specialist_calls_per_case": null
+    },
+    "dataset_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "dataset_version": "synthetic-evaluation-1.0",
+    "decision": "RETAIN_DETERMINISTIC",
+    "dependencies": {
+      "joblib": null,
+      "lightgbm": null,
+      "numpy": null,
+      "python": "3.13.15",
+      "scikit-learn": null,
+      "scipy": null,
+      "threadpoolctl": null,
+      "xgboost": null
+    },
+    "feature_version": "observed-intake-1.0",
+    "hardware": {
+      "logical_cpu_count": 16,
+      "machine": "AMD64",
+      "platform": "Windows-11-10.0.26200-SP0"
+    },
+    "models": {
+      "decision_tree": {
+        "available": false,
+        "status": "BLOCKED_DATASET"
+      },
+      "lightgbm": {
+        "available": false,
+        "status": "BLOCKED_DATASET"
+      },
+      "logistic_regression": {
+        "available": false,
+        "status": "BLOCKED_DATASET"
+      },
+      "random_forest": {
+        "available": false,
+        "status": "BLOCKED_DATASET"
+      },
+      "xgboost": {
+        "available": false,
+        "status": "BLOCKED_DATASET"
+      }
+    },
+    "operational_enabled": false,
+    "policy": {
+      "maximum_artifact_bytes": 10000000,
+      "maximum_critical_error_increase": 0,
+      "maximum_p95_latency_ms": 50,
+      "minimum_critical_recall": 0.95,
+      "minimum_macro_f1_gain": 0.03,
+      "requires_group_holdout": true,
+      "requires_human_approval": true,
+      "requires_measured_operational_benefit": true,
+      "requires_no_critical_error_increase": true,
+      "requires_positive_family_bootstrap_lower_gain": true,
+      "version": "ml-acceptance-1.0"
+    },
+    "readiness": {
+      "blocking_reasons": [
+        "fewer_than_two_label_classes",
+        "fewer_than_30_independent_families_per_class"
+      ],
+      "class_distribution": {},
+      "duplicate_feature_rows": 0,
+      "incident_families": 0,
+      "independent_families_per_class": {},
+      "ready": false,
+      "usable_rows": 0
+    },
+    "seed": 12,
+    "split_strategy": "incident_family_holdout",
+    "splits": null,
+    "task": "sla",
+    "unknown_handling": "Held-out labels absent from training are rejected. Experimental estimators have no validated abstention policy; operational integration is disabled."
+  }
+}

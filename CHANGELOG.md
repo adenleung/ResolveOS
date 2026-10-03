@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.12.0 - 2026-10-04
+
+- Added read-only actual-data readiness audit, strict point-in-time numeric feature
+  schema and historical PostgreSQL evidence snapshot extraction.
+- Added reviewed synthetic dataset contracts, incident/scenario-aware fixed-seed
+  splits, optional CPU model comparison framework and experimental registration.
+- Recorded inadequate data for all five use cases; retained deterministic rules.
+  No model or inference adapter enabled; no schema or authorization-chain changes.
+- Added safety, feature, split, compatibility and unavailable-library regression
+  tests and dataset/comparison/governance/acceptance reports.
+- Optional native estimator validation blocked by Windows Application Control;
+  trained-model path remains unverified. See PHASE12_ACCEPTANCE.md.
+- Accepted dataset-inadequate branch: 311 full PostgreSQL tests in 755.460s,
+  43 targeted in 79.366s; all prior 268 tests retained, no failures/errors/skips.
+
 ## 0.11.0 - 2026-10-04
 
 - Implemented reviewed operational memory with explicit publication, rejection,

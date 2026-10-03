@@ -1,0 +1,42 @@
+{
+  "status": "BLOCKED",
+  "purpose": "Optional toy estimator checks; not a ResolveOS benchmark",
+  "dependencies": {
+    "python": "3.13.15",
+    "numpy": "2.5.3",
+    "scikit-learn": "1.9.1",
+    "scipy": "1.18.1",
+    "joblib": "1.6.0",
+    "threadpoolctl": "3.7.0",
+    "xgboost": null,
+    "lightgbm": null
+  },
+  "models": {
+    "logistic_regression": {
+      "available": true,
+      "status": "UNAVAILABLE",
+      "error": "ImportError: DLL load failed while importing _argkmin_classmode: An Application Control policy has blocked this file."
+    },
+    "decision_tree": {
+      "available": true,
+      "status": "UNAVAILABLE",
+      "error": "ImportError: DLL load failed while importing _argkmin_classmode: An Application Control policy has blocked this file."
+    },
+    "random_forest": {
+      "available": true,
+      "status": "UNAVAILABLE",
+      "error": "ImportError: DLL load failed while importing _argkmin_classmode: An Application Control policy has blocked this file."
+    },
+    "xgboost": {
+      "available": false,
+      "status": "UNAVAILABLE",
+      "error": "ImportError: DLL load failed while importing _argkmin_classmode: An Application Control policy has blocked this file."
+    },
+    "lightgbm": {
+      "available": false,
+      "status": "UNAVAILABLE",
+      "error": "ImportError: DLL load failed while importing _argkmin_classmode: An Application Control policy has blocked this file."
+    }
+  },
+  "operational_enabled": false
+}

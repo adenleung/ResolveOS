@@ -1,0 +1,96 @@
+{
+  "audit_version": "dataset-readiness-1.0",
+  "audited_at": "2026-10-03T18:56:06.702927+00:00",
+  "blocking_findings": [
+    "2 source payments; independence not validated and no adequate family coverage established.",
+    "No validated task-specific label dataset or split manifest exists.",
+    "Scenario names occur in identifiers; template statuses, fixed log patterns and ledger deltas offer memorization shortcuts.",
+    "Simulator uses wall-clock generation; seed alone does not reproduce timestamps.",
+    "SLA outcome trajectories, independently reviewed routing utility, risk escalation targets, and pairwise incident causation labels are absent.",
+    "Distribution and temporal generalization cannot be estimated from this small checkpoint."
+  ],
+  "counts": {
+    "assessment_history": 2,
+    "cases": 22,
+    "event_records": 10,
+    "exceptions": 2,
+    "investigation_runs": 0,
+    "sim_confirmation_events": 2,
+    "sim_ledger_entries": 2,
+    "sim_payments": 2,
+    "sim_technology_logs": 2,
+    "sim_workflow_states": 2,
+    "verification_results": 0
+  },
+  "distinct_observed_scenarios": 1,
+  "exact_duplicate_event_identities": 0,
+  "exception_type_distribution": {
+    "API_PROCESSING_FAILURE": 2
+  },
+  "future_dated_events": 0,
+  "label_provenance": "Simulator expected_root_cause and processing_outcome are hidden template labels, not validated task targets. Rule assessments are baseline outputs, not independent ground truth. Investigator text and reviewed memory are not training labels.",
+  "missing_simulator_fields": {
+    "expected_root_cause": 0,
+    "incident_key": 0,
+    "processing_outcome": 0,
+    "scenario_name": 0
+  },
+  "near_duplicate_payment_shapes_excluding_amount_and_identifiers": 1,
+  "observed_scenario_distribution": {
+    "api_timeout": 2
+  },
+  "ready": false,
+  "revision": "20261004_0012",
+  "scenario_templates": 13,
+  "simulator_family_keys": 1,
+  "source_timing": [
+    {
+      "count": 2,
+      "first_ingested": "2026-10-02 12:19:41.669511+00:00",
+      "first_occurred": "2026-10-02 12:19:41.486334+00:00",
+      "last_ingested": "2026-10-02 12:19:41.676959+00:00",
+      "last_occurred": "2026-10-02 12:19:41.567572+00:00",
+      "source_system": "api_gateway"
+    },
+    {
+      "count": 2,
+      "first_ingested": "2026-10-02 12:19:41.651446+00:00",
+      "first_occurred": "2026-10-02 12:20:41.486334+00:00",
+      "last_ingested": "2026-10-02 12:19:41.661618+00:00",
+      "last_occurred": "2026-10-02 12:20:41.567572+00:00",
+      "source_system": "confirmations"
+    },
+    {
+      "count": 2,
+      "first_ingested": "2026-10-02 12:19:41.633991+00:00",
+      "first_occurred": "2026-10-02 12:19:41.504342+00:00",
+      "last_ingested": "2026-10-02 12:19:41.641731+00:00",
+      "last_occurred": "2026-10-02 12:19:41.578075+00:00",
+      "source_system": "ledger"
+    },
+    {
+      "count": 2,
+      "first_ingested": "2026-10-02 12:19:41.617428+00:00",
+      "first_occurred": "2026-10-02 12:19:41.568019+00:00",
+      "last_ingested": "2026-10-02 12:19:41.626014+00:00",
+      "last_occurred": "2026-10-02 12:19:41.592797+00:00",
+      "source_system": "payments"
+    },
+    {
+      "count": 2,
+      "first_ingested": "2026-10-02 12:19:41.683429+00:00",
+      "first_occurred": "2026-10-02 12:19:41.486334+00:00",
+      "last_ingested": "2026-10-02 12:19:41.689902+00:00",
+      "last_occurred": "2026-10-02 12:19:41.567572+00:00",
+      "source_system": "workflow"
+    }
+  ],
+  "usable_validated_training_examples": {
+    "classification": 0,
+    "correlation": 0,
+    "risk": 0,
+    "routing": 0,
+    "sla": 0
+  },
+  "validated_independent_incident_families": 0
+}

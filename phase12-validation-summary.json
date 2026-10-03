@@ -1,0 +1,59 @@
+{
+  "reports": {
+    "phase12-final-full-regression-results.xml": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "311",
+      "time": "755.460",
+      "timestamp": "2026-10-04T02:55:07.435744+08:00",
+      "hostname": "aden"
+    },
+    "phase12-targeted-results.xml": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "43",
+      "time": "79.366",
+      "timestamp": "2026-10-04T02:59:33.554793+08:00",
+      "hostname": "aden"
+    },
+    "phase12-unit-results.xml": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "39",
+      "time": "0.385",
+      "timestamp": "2026-10-04T03:02:07.972200+08:00",
+      "hostname": "aden"
+    }
+  },
+  "test_module_counts": {
+    "tests.test_audit": 1,
+    "tests.test_case_lifecycle": 2,
+    "tests.test_config": 2,
+    "tests.test_database": 1,
+    "tests.test_foundation_integration": 3,
+    "tests.test_phase10_postgres": 29,
+    "tests.test_phase10_simulation_unit": 16,
+    "tests.test_phase11_postgres": 46,
+    "tests.test_phase12_postgres": 4,
+    "tests.test_phase12_unit": 39,
+    "tests.test_phase2_postgres": 8,
+    "tests.test_phase3_postgres": 13,
+    "tests.test_phase4_postgres": 18,
+    "tests.test_phase5_postgres": 26,
+    "tests.test_phase6_postgres": 35,
+    "tests.test_phase7_postgres": 28,
+    "tests.test_phase8_postgres": 11,
+    "tests.test_phase9_postgres": 24,
+    "tests.test_postgres_integration": 5
+  },
+  "development_revision": "20261004_0012",
+  "new_migrations": false,
+  "optional_estimator_validation": "BLOCKED_NATIVE_LIBRARY_POLICY",
+  "accepted_scope": "dataset-inadequate offline evaluation; no operational model"
+}

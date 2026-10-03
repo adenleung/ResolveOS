@@ -1,6 +1,28 @@
 # Current State
 
-## Active Phase 11 checkpoint — PostgreSQL accepted 2026-10-04
+## Active Phase 12 evaluation checkpoint — 2026-10-04
+
+- Offline dataset readiness, point-in-time features, incident/scenario-aware splits,
+  experiment metadata and governance are implemented in `app/ml`. Final acceptance
+  status is recorded in `PHASE12_ACCEPTANCE.md`.
+- Full Phases 1–11 backend commit `fdd9006` was confirmed on local main and GitHub
+  before changes. Historical statements that Git was unavailable describe the
+  earlier Phase 11 session, not this verified checkpoint.
+- Actual development revision remains `20261004_0012`; no schema or development
+  data changes. Dataset: 2 payments, 10 events, 2 API exceptions, one scenario and
+  one simulator family key; zero validated independent families/training examples.
+- All five use cases retain deterministic rules. No model trained, enabled or
+  integrated; no inference adapter. XGBoost/LightGBM unavailable. Optional sklearn
+  toy validation is blocked by Windows Application Control rejecting native ML DLLs.
+- See `PHASE12_DATASET_READINESS.md`, `PHASE12_MODEL_COMPARISON.md` and
+  `PHASE12_MODEL_GOVERNANCE.md` for exact findings, evidence and limitations.
+- Stop after Phase 12. Phase 13 and frontend remain unstarted.
+- Dataset-inadequate framework-only acceptance passed: **311 full PostgreSQL
+  tests in 755.460s**, **43 targeted tests in 79.366s**, zero failures/errors/skips.
+  All 268 prior tests are retained. Trained-estimator validation remains blocked;
+  this is not approval to serve a model. See `PHASE12_ACCEPTANCE.md`.
+
+## Historical Phase 11 checkpoint — PostgreSQL accepted 2026-10-04
 
 - Reviewed operational memory passed PostgreSQL acceptance. Source and development Alembic are `20261004_0012`, following the accepted Phase 10 `20261002_0011` checkpoint. Full regression: **268 passed in 666.32s**, no failures/errors/skips/warnings; all original 222 tests remain passing. Evidence: `phase11-full-regression-results.xml`.
 - Final targeted Phase 11 tests: **46 passed in 160.08s**. Existing investigator/Supervisor baseline: **39 passed in 138.22s**, with one optional pytest-cache permissions warning. Unchanged Phase 9–10 safety suite: **69 passed in 180.25s**, no failures/errors/skips/warnings. Original Phase 10 XML reports are preserved.

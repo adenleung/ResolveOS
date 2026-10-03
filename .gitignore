@@ -36,6 +36,9 @@ htmlcov/
 .tox/
 .nox/
 .cache/
+.ml-deps/
+*.joblib
+*.pkl
 .idea/
 .vscode/
 node_modules/

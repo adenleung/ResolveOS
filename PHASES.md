@@ -11,18 +11,18 @@
 - Phase 9: deterministic controls and action authorization (implemented).
 - Phase 10: synthetic confirmation replay, independent verification, terminal execution recovery and counterfactual projections (**0011 PostgreSQL accepted**).
 - Phase 11: reviewed operational memory (**0012 PostgreSQL accepted**).
-- Phase 12: reproducible ML/correlation benchmarks (not started).
+- Phase 12: dataset-inadequate offline evaluation/governance accepted (311 full / 43 targeted tests); training blocked, trained path unverified, no model enabled. See PHASE12_ACCEPTANCE.md.
 - Phase 13: prevention and analytics (not started).
 - Phase 14: dedicated security/reliability acceptance (incomplete; earlier phases provide partial coverage).
 - Phase 15: frontend (not started; excluded).
 
-Current accepted checkpoint: **Phase 11**, 268 full regression tests, 46 targeted memory tests and 69 unchanged Phase 9–10 safety tests passing. Fresh and populated migration round trips and reflected constraints/indexes passed. Source and development Alembic are `20261004_0012`; development upgraded after final validation and a fresh recovery backup, with all 38 existing tables preserved by row count and content hash. See CURRENT_STATE.md and PHASE11_ACCEPTANCE.md. Ready for a separately authorized Phase 12 handoff; stop after Phase 11.
+Current implementation checkpoint: **Phase 12 dataset-inadequate offline branch**; exact acceptance results are in PHASE12_ACCEPTANCE.md. No supervised operational benchmark performance or benefit is claimed; rules remain active. Prior Phase 11 acceptance was 268 full, 46 targeted memory and 69 safety tests. Source and development Alembic remain `20261004_0012`. Development was read only during Phase 12; no migration required. Stop after Phase 12.
 
 Scheduling, workflow approval, deterministic action authorization, executed effects and independent verification remain distinct. Current remediation is limited to synthetic confirmation replay and never repeats a monetary transfer.
 
 ## Expanded feature roadmap (PLANNED, not implemented)
 
-- Phase 12: incident-aware benchmarks comparing deterministic rules, Logistic Regression, Decision Tree, Random Forest, XGBoost and LightGBM; only deploy an advisory model if evidence justifies it.
+- Phase 12 follow-up within evaluated scope: adequate reviewed datasets and an environment permitting optional ML libraries are needed for real model comparisons; any integration requires separate evidence and approval.
 - Phase 13: evidence-backed root-cause hypotheses, process mining, case dependency visualization and approved improvement tracking.
 - Phase 14: comprehensive security/reliability tests, Shadow Mode, decision-context replay, incident replay, failure detection and optional model routing.
 - Phase 15: enterprise operations dashboard, evidence-linked human handover and interactive what-if visualization using persisted hypothetical reports.

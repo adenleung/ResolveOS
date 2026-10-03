@@ -1,5 +1,25 @@
 # ResolveOS Architecture
 
+## Phase 12 offline ML evaluation and governance
+
+`app/ml` is an isolated offline evaluation package. Operational classification,
+correlation, routing, investigators, Supervisor, controls, execution and reviewed
+memory do not import it. Features are allowlisted numeric observations, validated
+under `observed-intake-1.0`; source event occurrence, ingestion and evidence-link
+times enforce intake availability. Dataset metadata/hidden scenario labels and
+current SLA projections never enter this feature schema.
+
+Reviewed synthetic manifests, incident/scenario-aware splits, train-only scaling,
+validation-only parameter selection and independent test metrics are recorded in
+reproducible experiment reports. Optional CPU estimator libraries are outside
+operational requirements. Training is blocked when readiness fails. Registration
+metadata is experimental only; there is no promotion, serving or runtime training.
+Actual data is inadequate; no adapter is enabled and no bank/control schema changes
+are required. Optional estimator smoke execution was blocked by Windows Application
+Control on native ML DLLs; the trained path remains unverified. The dataset-inadequate
+scope passed 311 full / 43 targeted tests. See PHASE12_ACCEPTANCE.md and the
+three Phase 12 dataset/comparison/governance reports. Phase 13 is unstarted.
+
 ## Phase 11 reviewed operational memory
 
 `app/memory` adds governed historical context to the modular monolith. Migration
@@ -44,7 +64,8 @@ retrieval requires explicit case/source grants; no enterprise tenant schema or
 production identity provider is claimed. Publication history is application guarded,
 not protected against arbitrary privileged SQL writes. Downgrade drops Phase 11
 tables and preserves Phase 1–10 source/audit rows. See PHASE11_CONTRACTS.md and
-PHASE11_ACCEPTANCE.md for exact validation and limitations. Phase 12 is unstarted.
+PHASE11_ACCEPTANCE.md for exact validation and limitations. Phase 12 status is
+recorded in the offline evaluation section above.
 
 ## Phase 10 counterfactual extension (0011; PostgreSQL accepted 2026-10-04)
 

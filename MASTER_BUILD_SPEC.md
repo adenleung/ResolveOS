@@ -1,6 +1,6 @@
 # ResolveOS Master Build Spec Summary
 
-ResolveOS is a modular-monolith operations platform. The current repository implements Phases 1-11 and preserves PostgreSQL as its system of record. The accepted Phase 10 counterfactual baseline is revision 20261002_0011, with 222 full and 29 targeted tests. Phase 11 adds reviewed operational memory at source revision 20261004_0012; its final validation status is recorded in CURRENT_STATE.md and PHASE11_ACCEPTANCE.md. Phases 12–16 remain future scope, as described in PHASES.md.
+ResolveOS is a modular-monolith operations platform. The current repository implements Phases 1-11 and the Phase 12 dataset-inadequate offline evaluation branch, preserving PostgreSQL as its system of record. Phase 11 reviewed memory remains at revision 20261004_0012. Phase 12 adds readiness audit, historical feature validation, experiment and governance frameworks; no model or inference adapter is enabled. Exact acceptance and limitations are recorded in CURRENT_STATE.md and PHASE12_ACCEPTANCE.md. Phases 13–16 remain future scope, as described in PHASES.md.
 
 ## Implemented scope
 
