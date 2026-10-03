@@ -1,0 +1,1 @@
+"""Synthetic source event ingestion and deterministic exception detection."""

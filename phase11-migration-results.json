@@ -1,0 +1,396 @@
+{
+  "fresh_upgrade": "0001 -> 20261004_0012",
+  "populated_round_trip": "0012 -> 0011 -> 0012",
+  "source_tables_preserved": 38,
+  "memory_artifacts_on_downgrade": "Dropped explicitly; source and audit history preserved",
+  "constraints_and_indexes": {
+    "memory_evidence": {
+      "columns": 4,
+      "foreign_keys": 3,
+      "indexes": [],
+      "unique_constraints": [],
+      "check_constraints": []
+    },
+    "memory_retrievals": {
+      "columns": 7,
+      "foreign_keys": 1,
+      "indexes": [
+        "ix_memory_retrievals_case_id"
+      ],
+      "unique_constraints": [],
+      "check_constraints": []
+    },
+    "memory_reviews": {
+      "columns": 10,
+      "foreign_keys": 2,
+      "indexes": [
+        "ix_memory_reviews_version_id"
+      ],
+      "unique_constraints": [],
+      "check_constraints": []
+    },
+    "memory_versions": {
+      "columns": 18,
+      "foreign_keys": 5,
+      "indexes": [
+        "ix_memory_retrieval",
+        "uq_memory_active",
+        "uq_memory_version"
+      ],
+      "unique_constraints": [
+        {
+          "column_names": [
+            "memory_id",
+            "version"
+          ],
+          "name": "uq_memory_version",
+          "comment": null,
+          "dialect_options": {
+            "postgresql_include": [],
+            "postgresql_nulls_not_distinct": false
+          }
+        }
+      ],
+      "check_constraints": [
+        {
+          "name": "ck_memory_active_review",
+          "sqltext": "status::text <> 'ACTIVE'::text OR reviewer IS NOT NULL AND reviewed_at IS NOT NULL",
+          "comment": null
+        },
+        {
+          "name": "ck_memory_positive_version",
+          "sqltext": "version > 0",
+          "comment": null
+        },
+        {
+          "name": "ck_memory_status",
+          "sqltext": "status::text = ANY (ARRAY['CANDIDATE'::character varying, 'PENDING_REVIEW'::character varying, 'ACTIVE'::character varying, 'REJECTED'::character varying, 'REVOKED'::character varying, 'SUPERSEDED'::character varying]::text[])",
+          "comment": null
+        },
+        {
+          "name": "ck_memory_summary_bound",
+          "sqltext": "length(summary) >= 1 AND length(summary) <= 1000 AND length(failure_pattern::text) <= 300",
+          "comment": null
+        }
+      ]
+    },
+    "operational_memories": {
+      "columns": 4,
+      "foreign_keys": 1,
+      "indexes": [
+        "uq_memory_case_category"
+      ],
+      "unique_constraints": [
+        {
+          "column_names": [
+            "case_id",
+            "category"
+          ],
+          "name": "uq_memory_case_category",
+          "comment": null,
+          "dialect_options": {
+            "postgresql_include": [],
+            "postgresql_nulls_not_distinct": false
+          }
+        }
+      ],
+      "check_constraints": []
+    }
+  },
+  "source_snapshot": {
+    "action_approval_history": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "action_approvals": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "actions": {
+      "count": 1,
+      "sha256": "e236428867e83bdf5485fd3a8045d070bab8afd91d7ae8cb05628c7e2afc4cd0"
+    },
+    "assessment_history": {
+      "count": 1,
+      "sha256": "11893f0ecf6bb661776a530b669a396f2157b7a784a657a73d15be766c8d6f5c"
+    },
+    "audit_logs": {
+      "count": 20,
+      "sha256": "0ac6c31951c7a4fa192d4e82a4874a985488c66ee4d4f21f54163af4f395c902"
+    },
+    "case_incidents": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "cases": {
+      "count": 2,
+      "sha256": "0323ab64edf91c2a306adf5534842197b69c5bd98773d284f45f9c3efeb5887c"
+    },
+    "control_authorizations": {
+      "count": 1,
+      "sha256": "c3ff0f76ee6e37fc926904b32a1b4e6bfa50688ffdb51b2e57943f25d62739b2"
+    },
+    "counterfactual_simulations": {
+      "count": 1,
+      "sha256": "d586fc07c3c7aa79e4e4dd2c2d821d30b782bcfee8debef857bc0af05ecd99c5"
+    },
+    "decisions": {
+      "count": 1,
+      "sha256": "3fc98b04d808eaf2cc62f31531b1a4d83f865447d6080bf4af9ceee23bd91d01"
+    },
+    "detection_history": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "event_records": {
+      "count": 3,
+      "sha256": "1342ba6e26cdfed451fff2155b1304ce146ddc2c282bd73791bf9ed34fdc6ad5"
+    },
+    "evidence": {
+      "count": 1,
+      "sha256": "b42d477895f8f192dec5fe2296701eea4e58bee3567807ee89585409faa73e65"
+    },
+    "exception_evidence": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "exceptions": {
+      "count": 2,
+      "sha256": "0c28116d5ad627d76cb10f22656a21c8e1ab199f9441d3b19e2e713c99ec1a08"
+    },
+    "execution_operations": {
+      "count": 1,
+      "sha256": "efecf6c405e8bbfc8e8102584e3e2b2f3182341b622fc6dea136d608e461ea55"
+    },
+    "human_approvals": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "incident_correlation_history": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "incident_correlation_runs": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "incidents": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "ingestion_errors": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "investigation_runs": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "investigator_findings": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "orchestration_task_consumers": {
+      "count": 2,
+      "sha256": "78175f328282f772f6c5986af2f8dc5b643267a03be765bbb70687a47a70e68a"
+    },
+    "orchestration_task_history": {
+      "count": 7,
+      "sha256": "950cad00dfed049d427bffd6f0ba8343de68c2b9c73248a479e7a309ed4dd4a8"
+    },
+    "orchestration_tasks": {
+      "count": 3,
+      "sha256": "a038961b44b820e66511d2d1481cf30e06a3f6e32bfa904535708dcc8e4dfbc7"
+    },
+    "policies": {
+      "count": 1,
+      "sha256": "91b5588f3023fbeee3cddd696b183e650b49f0abf081b51e5e516ceb95e7ea2d"
+    },
+    "policy_versions": {
+      "count": 1,
+      "sha256": "0393f0ddcc037da8796d949b8b4e6a30c1e2e86e6e223d43c9e05bbb303bda78"
+    },
+    "sim_confirmation_events": {
+      "count": 1,
+      "sha256": "f28f4355ab271e5cdedffd80165eab8fe768b8a6c76111b7bc78363a5aae5460"
+    },
+    "sim_ledger_entries": {
+      "count": 1,
+      "sha256": "de4ab2ccf89f069a7ae1a58dcddd7753f5004a1f36b1c9cc9f5d5928efb22ed0"
+    },
+    "sim_payments": {
+      "count": 1,
+      "sha256": "25870848420a31a9ba7737cb9451ebd79facec425523d1f85ac9c40afab2eb59"
+    },
+    "sim_policies": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "sim_technology_logs": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "sim_workflow_states": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "supervisor_reviews": {
+      "count": 1,
+      "sha256": "da3667eca92a5b9fc76189c0058b3afc160e3036597d0739505bb13d83ca1532"
+    },
+    "verification_results": {
+      "count": 1,
+      "sha256": "d1eb6d1bba3eee5102f4b6450001d395b3eb0c4704ebf22de86c4e2e86838702"
+    },
+    "workflow_review_history": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "workflow_reviews": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    }
+  },
+  "retrieval_sample": {
+    "eligible_candidates": 1,
+    "returned": 1,
+    "sql_statements_including_audit": 24,
+    "elapsed_seconds": 0.132026,
+    "serialized_context_bytes": 1772,
+    "scope": "One local synthetic retrieval; not enterprise load/latency acceptance"
+  },
+  "candidate_query_plan": [
+    {
+      "Plan": {
+        "Node Type": "Limit",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 0.29,
+        "Total Cost": 16.43,
+        "Plan Rows": 1,
+        "Plan Width": 72,
+        "Actual Startup Time": 0.097,
+        "Actual Total Time": 0.102,
+        "Actual Rows": 1,
+        "Actual Loops": 1,
+        "Shared Hit Blocks": 5,
+        "Shared Read Blocks": 0,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 0,
+        "Local Hit Blocks": 0,
+        "Local Read Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Temp Read Blocks": 0,
+        "Temp Written Blocks": 0,
+        "Plans": [
+          {
+            "Node Type": "Nested Loop",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Join Type": "Inner",
+            "Startup Cost": 0.29,
+            "Total Cost": 16.43,
+            "Plan Rows": 1,
+            "Plan Width": 72,
+            "Actual Startup Time": 0.094,
+            "Actual Total Time": 0.099,
+            "Actual Rows": 1,
+            "Actual Loops": 1,
+            "Inner Unique": true,
+            "Shared Hit Blocks": 5,
+            "Shared Read Blocks": 0,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Local Hit Blocks": 0,
+            "Local Read Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Temp Read Blocks": 0,
+            "Temp Written Blocks": 0,
+            "Plans": [
+              {
+                "Node Type": "Index Scan",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Scan Direction": "Backward",
+                "Index Name": "ix_memory_retrieval",
+                "Relation Name": "memory_versions",
+                "Alias": "v",
+                "Startup Cost": 0.14,
+                "Total Cost": 8.16,
+                "Plan Rows": 1,
+                "Plan Width": 72,
+                "Actual Startup Time": 0.058,
+                "Actual Total Time": 0.062,
+                "Actual Rows": 1,
+                "Actual Loops": 1,
+                "Index Cond": "(((category)::text = 'PAYMENT_CONFIRMATION_MISMATCH'::text) AND ((status)::text = 'ACTIVE'::text))",
+                "Rows Removed by Index Recheck": 0,
+                "Shared Hit Blocks": 3,
+                "Shared Read Blocks": 0,
+                "Shared Dirtied Blocks": 0,
+                "Shared Written Blocks": 0,
+                "Local Hit Blocks": 0,
+                "Local Read Blocks": 0,
+                "Local Dirtied Blocks": 0,
+                "Local Written Blocks": 0,
+                "Temp Read Blocks": 0,
+                "Temp Written Blocks": 0
+              },
+              {
+                "Node Type": "Index Scan",
+                "Parent Relationship": "Inner",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Scan Direction": "Forward",
+                "Index Name": "operational_memories_pkey",
+                "Relation Name": "operational_memories",
+                "Alias": "m",
+                "Startup Cost": 0.14,
+                "Total Cost": 8.16,
+                "Plan Rows": 1,
+                "Plan Width": 64,
+                "Actual Startup Time": 0.027,
+                "Actual Total Time": 0.027,
+                "Actual Rows": 1,
+                "Actual Loops": 1,
+                "Index Cond": "((id)::text = (v.memory_id)::text)",
+                "Rows Removed by Index Recheck": 0,
+                "Filter": "((case_id)::text <> '5c9ee4384f6c451d88ad401e59d55e3d'::text)",
+                "Rows Removed by Filter": 0,
+                "Shared Hit Blocks": 2,
+                "Shared Read Blocks": 0,
+                "Shared Dirtied Blocks": 0,
+                "Shared Written Blocks": 0,
+                "Local Hit Blocks": 0,
+                "Local Read Blocks": 0,
+                "Local Dirtied Blocks": 0,
+                "Local Written Blocks": 0,
+                "Temp Read Blocks": 0,
+                "Temp Written Blocks": 0
+              }
+            ]
+          }
+        ]
+      },
+      "Planning": {
+        "Shared Hit Blocks": 0,
+        "Shared Read Blocks": 0,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 0,
+        "Local Hit Blocks": 0,
+        "Local Read Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Temp Read Blocks": 0,
+        "Temp Written Blocks": 0
+      },
+      "Planning Time": 0.554,
+      "Triggers": [],
+      "Execution Time": 0.217
+    }
+  ]
+}
