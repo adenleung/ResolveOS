@@ -17,6 +17,7 @@ import app.controls.models  # noqa: F401
 import app.execution.models  # noqa: F401
 import app.simulator.models  # noqa: F401
 import app.memory.models  # noqa: F401
+import app.reliability.models  # noqa: F401
 
 config = context.config
 

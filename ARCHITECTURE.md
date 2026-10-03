@@ -1,5 +1,15 @@
 # ResolveOS Architecture
 
+## Phase 14 shadow and recorded replay
+
+`app/reliability` reuses Controls.inspect under PostgreSQL-enforced read-only
+inspection, then persists a separate non-executable shadow observation. Operational
+Controls retains locks and all authorization checks. Migration 0013 adds only the
+constrained shadow table. Replay reconstructs evidence availability and immutable
+decision/approval history, labels interpretation and simulation, and separates later
+observations. Current policy content is not represented as historical policy.
+Queue telemetry and measured cohort outcomes remain separate. See PHASE14_ACCEPTANCE.md.
+
 ## Phase 13 operational intelligence
 
 `app/intelligence` reads existing normalized evidence, assessments, durable task

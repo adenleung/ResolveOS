@@ -3,7 +3,7 @@
 Synthetic banking operations prototype: modular FastAPI monolith, PostgreSQL,
 versioned APIs, durable fenced workers, deterministic controls, separate human
 action approvals, confirmation-only execution, independent verification and
-reviewed historical memory. Phases 1?13 are implemented. The authorized recovery
+reviewed historical memory. Phases 1–14 are implemented. The authorized recovery
 build continues through separately validated Phases 14 and 15.
 
 Phase 12 found inadequate ML data; no trained model is operational. Phase 13 adds
@@ -11,6 +11,10 @@ protected read-only operational intelligence. See CURRENT_STATE.md and the phase
 acceptance reports for exact results and limitations. No live banking, real customer
 data or paid LLM calls are used. Production identity/tenancy and distributed failover
 are not claimed.
+
+Phase 14 adds non-executable shadow evaluation and outcome comparison, recorded
+decision replay and measured telemetry under `/api/v1/reliability`. See
+PHASE14_ACCEPTANCE.md for authority boundaries, historical limitations and migration.
 
 ## Backend setup
 

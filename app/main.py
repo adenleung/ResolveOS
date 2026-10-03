@@ -23,6 +23,7 @@ from app.orchestration.api import router as orchestration_router
 from app.controls.api import router as controls_router
 from app.memory.api import router as memory_router
 from app.intelligence.api import router as intelligence_router
+from app.reliability.api import router as reliability_router
 
 logger = logging.getLogger(__name__)
 
@@ -543,6 +544,7 @@ def create_app() -> FastAPI:
     app.include_router(controls_router(database, settings))
     app.include_router(memory_router(database, settings))
     app.include_router(intelligence_router(database, settings))
+    app.include_router(reliability_router(database, settings))
     return app
 
 

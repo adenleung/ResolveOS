@@ -1,6 +1,18 @@
 # Current State
 
-## Active Phase 13 recovery build
+## Active Phase 14 recovery build
+
+Phase 13 was accepted and remotely verified at
+`ba0367d46260b9195b1506ebfb79a973ad98465b` before Phase 14 began.
+Dedicated shadow/replay, telemetry and verified-backup migration tooling are now
+implemented. Exact Phase 14 validation, development migration and remote checkpoint
+are recorded in PHASE14_ACCEPTANCE.md. Shadow is non-executable; offline ML remains
+disabled. Phase 15 starts after the Phase 14 checkpoint is pushed and verified.
+Acceptance: 18 targeted, 69 safety and 350 final full PostgreSQL tests passed,
+zero failures/errors/skips. Development upgraded to 0013 after verified backup
+restoration; all 43 existing tables retained identical full-row hashes.
+
+## Historical Phase 13 recovery checkpoint
 
 The accepted Phase 12 backend was recovered at `f0ed616`; neither reported newer
 checkpoint nor frontend files were recoverable. Fresh baseline: 311 PostgreSQL

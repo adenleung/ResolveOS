@@ -1,0 +1,185 @@
+{
+  "database": "resolveos",
+  "cluster_system_identifier": "7692021404190748707",
+  "previous_revision": "20261004_0012",
+  "revision": "20261004_0013",
+  "backup_file": "resolveos-pre-0013-ef1f4be6.dump",
+  "backup_sha256": "61e02e83e00ad69d301f909adb7b71cfd0d68f857cc4a97c7581377f10fa630c",
+  "backup_restore_verified": true,
+  "populated_disposable_round_trip_verified": true,
+  "existing_tables_preserved": {
+    "action_approval_history": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "action_approvals": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "actions": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "assessment_history": {
+      "count": 2,
+      "sha256": "6bce03f0a73142a9af494af272f6635f2a234f5e393ba99890427ac66366ca55"
+    },
+    "audit_logs": {
+      "count": 16,
+      "sha256": "f335b98ddb86820522bac0d7494d4e5b3a8313cd72fc98a93db05a67631d2359"
+    },
+    "case_incidents": {
+      "count": 2,
+      "sha256": "b63e498a289e1eb6afc636da2aa3bd1d43c8e3abe0e399ccef449353687b65ee"
+    },
+    "cases": {
+      "count": 22,
+      "sha256": "74e7ae49349474a70a918eeeb8a283e9a7a110870a60f07c55dd4562f662109a"
+    },
+    "control_authorizations": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "counterfactual_simulations": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "decisions": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "detection_history": {
+      "count": 2,
+      "sha256": "6a8d79cbb9e00a8495337559fc457a407448d0a4f47e2f2e8a412e4c4ba8c4e4"
+    },
+    "event_records": {
+      "count": 10,
+      "sha256": "1827020d56367a2da914bf90ff838d8a3cfe74a5d5ccc1e8e6d9c3bd4c31a410"
+    },
+    "evidence": {
+      "count": 2,
+      "sha256": "d988493a538189233ce64859cbd9edca646ada8481b31f7807f5323e0456ae1e"
+    },
+    "exception_evidence": {
+      "count": 2,
+      "sha256": "f647486092214bcd41cda236364dba42fae06da2e315ffe68808389ff566eb65"
+    },
+    "exceptions": {
+      "count": 2,
+      "sha256": "ee766a43238edcab8a608823bfae03d5919ae7b5630b9933c509da18aea78ed2"
+    },
+    "execution_operations": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "human_approvals": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "incident_correlation_history": {
+      "count": 2,
+      "sha256": "94d140a03ccd71fbd1ddd9c097b3ec460a8ac748ef08a15770ee2d3d71209858"
+    },
+    "incident_correlation_runs": {
+      "count": 1,
+      "sha256": "d5d593816aa70ca0a44dfdbec491c81afbebbfcf4c57b15a44f4ec51f582dcca"
+    },
+    "incidents": {
+      "count": 1,
+      "sha256": "e43dd936aec2e5cc8e843192d48603393abe6863e2cb19b41d3685b16a9383d2"
+    },
+    "ingestion_errors": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "investigation_runs": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "investigator_findings": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "memory_evidence": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "memory_retrievals": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "memory_reviews": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "memory_versions": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "operational_memories": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "orchestration_task_consumers": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "orchestration_task_history": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "orchestration_tasks": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "policies": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "policy_versions": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "sim_confirmation_events": {
+      "count": 2,
+      "sha256": "a81c96ac40157839872eca33cf351399a8760619fc9ba44010320d876da6b2ee"
+    },
+    "sim_ledger_entries": {
+      "count": 2,
+      "sha256": "9977bbad82ded6494195862369e38e86f4ba62df26297e61d890ad089da9f9c8"
+    },
+    "sim_payments": {
+      "count": 2,
+      "sha256": "7fb7329937e8b2b91a42622665d99dbf0e7a049574c7516a6869791bd96683f3"
+    },
+    "sim_policies": {
+      "count": 2,
+      "sha256": "d67d22f4d96b34d304ddc07109e841452b60ec361e6ff3e253b8736d11b9bbd0"
+    },
+    "sim_technology_logs": {
+      "count": 2,
+      "sha256": "c81290a6329c7dbcf0dafc3d7f5164cd9b3bd43d0f4d7aa9197a2a7b0c680d24"
+    },
+    "sim_workflow_states": {
+      "count": 2,
+      "sha256": "2cf3f9ce0af6cb849a1e2dc16139e8534e52491a83a234481254a995fec23dbd"
+    },
+    "supervisor_reviews": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "verification_results": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "workflow_review_history": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "workflow_reviews": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    }
+  },
+  "shadow_rows": 0
+}

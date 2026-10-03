@@ -17,9 +17,13 @@ from app.simulator.models import SyntheticConfirmationEvent, SyntheticLedgerEntr
 from app.supervisor.models import SupervisorReview
 
 class Controls:
-    def __init__(self, session, settings=None):
+    def __init__(self, session, settings=None, *, read_only=False):
         self.session = session
         self.workflow = OrchestrationService(session, settings)
+        self.read_only = read_only
+
+    def lock(self, statement):
+        return statement if self.read_only else statement.with_for_update()
 
     @staticmethod
     def amount(value):
@@ -35,12 +39,12 @@ class Controls:
             raise PermissionError("control_permission_required")
 
     def policy(self, version_id):
-        version = self.session.execute(select(PolicyVersion).where(PolicyVersion.id == version_id)
-            .with_for_update().execution_options(populate_existing=True)).scalar_one_or_none()
+        version = self.session.execute(self.lock(select(PolicyVersion).where(PolicyVersion.id == version_id))
+            .execution_options(populate_existing=True)).scalar_one_or_none()
         if version is None:
             return None, None, ["policy_missing"]
-        policy = self.session.execute(select(Policy).where(Policy.id == version.policy_id)
-            .with_for_update().execution_options(populate_existing=True)).scalar_one()
+        policy = self.session.execute(self.lock(select(Policy).where(Policy.id == version.policy_id))
+            .execution_options(populate_existing=True)).scalar_one()
         try:
             rules = ControlPolicy.model_validate(version.content)
         except ValidationError:
@@ -71,18 +75,18 @@ class Controls:
         ledgers = [row.payload for row in current.values() if row.source_system == "ledger"]
         confirmations = [row.payload for row in current.values() if row.source_system == "confirmations"]
         # Explicit columns only: runtime controls never load simulator labels/ground truth.
-        payment = self.session.execute(select(SyntheticPayment.id, SyntheticPayment.payment_id,
+        payment = self.session.execute(self.lock(select(SyntheticPayment.id, SyntheticPayment.payment_id,
             SyntheticPayment.status, SyntheticPayment.amount, SyntheticPayment.currency, SyntheticPayment.idempotency_key)
-            .where(SyntheticPayment.payment_id == action.payment_id).with_for_update()).mappings().one_or_none()
+            .where(SyntheticPayment.payment_id == action.payment_id))).mappings().one_or_none()
         bank_ledger, bank_confirmation = [], []
         if payment:
-            bank_ledger = [dict(row) for row in self.session.execute(select(SyntheticLedgerEntry.ledger_transaction_id,
+            bank_ledger = [dict(row) for row in self.session.execute(self.lock(select(SyntheticLedgerEntry.ledger_transaction_id,
                 SyntheticLedgerEntry.entry_type, SyntheticLedgerEntry.status, SyntheticLedgerEntry.amount, SyntheticLedgerEntry.currency)
                 .where(SyntheticLedgerEntry.payment_id == payment["id"]).order_by(SyntheticLedgerEntry.id)
-                .limit(1001).with_for_update()).mappings()]
-            bank_confirmation = [dict(row) for row in self.session.execute(select(SyntheticConfirmationEvent.event_id,
+                .limit(1001))).mappings()]
+            bank_confirmation = [dict(row) for row in self.session.execute(self.lock(select(SyntheticConfirmationEvent.event_id,
                 SyntheticConfirmationEvent.status).where(SyntheticConfirmationEvent.payment_id == payment["id"])
-                .order_by(SyntheticConfirmationEvent.id).limit(1001).with_for_update()).mappings()]
+                .order_by(SyntheticConfirmationEvent.id).limit(1001))).mappings()]
         if not payment or len(payments) != 1:
             issues.append("payment_source_missing_or_ambiguous")
         if not ledgers or not bank_ledger:
@@ -174,11 +178,17 @@ class Controls:
             "policy_hash": digest([version.content, version.version, version.effective_from]) if version else None,
             "action": action.model_dump()}, sorted(set(issues))
 
-    def evaluate(self, case_id, review_id, version_id, action, identity):
-        self.require(identity, "WORKER")
+    def inspect(self, case_id, review_id, version_id, action, identity):
+        """Shared deterministic calculation. Read-only callers acquire no row locks."""
+        if self.read_only:
+            if not identity.user_id or not identity.roles.intersection({"WORKER", "OPERATIONS_REVIEWER"}):
+                raise PermissionError("shadow_read_permission_required")
+        else:
+            self.require(identity, "WORKER")
         action = ActionRequest.model_validate(action)
-        case = self.workflow.case(case_id, lock=True)
-        self.workflow._incident_context(case)  # common correlation lock before source/policy locks
+        case = self.workflow.case(case_id, lock=not self.read_only)
+        if not self.read_only:
+            self.workflow._incident_context(case)  # operational lock order is preserved
         review = self.session.get(SupervisorReview, review_id)
         if review is None:
             raise LookupError("supervisor_review_not_found")
@@ -189,6 +199,12 @@ class Controls:
         severe = {"source_window_truncated", "bank_source_truncated", "policy_blast_radius_limit"}
         outcome = "ESCALATED" if severe.intersection(issues) else ("BLOCKED" if issues else
             ("HUMAN_APPROVAL_REQUIRED" if rules.human_approval_required or amount > rules.automatic_amount_limit else "AUTO_ELIGIBLE"))
+        return case, review, version, rules, action, snapshot, issues, outcome
+
+    def evaluate(self, case_id, review_id, version_id, action, identity):
+        if self.read_only:
+            raise PermissionError("read_only_controls_cannot_authorize")
+        case, review, version, rules, action, snapshot, issues, outcome = self.inspect(case_id, review_id, version_id, action, identity)
         fingerprint = digest([snapshot, outcome, sorted(set(issues))])
         existing = self.session.scalar(select(ControlAuthorization).where(ControlAuthorization.fingerprint == fingerprint))
         if existing:
@@ -215,6 +231,8 @@ class Controls:
         return self.serialize(record)
 
     def current(self, authorization_id, *, require_approval=True):
+        if self.read_only:
+            raise PermissionError("read_only_controls_cannot_authorize")
         preliminary = self.session.get(ControlAuthorization, authorization_id)
         if preliminary is None:
             raise LookupError("authorization_not_found")
@@ -240,6 +258,8 @@ class Controls:
         return case, record, rules
 
     def approve(self, approval_id, identity, operation, reason):
+        if self.read_only:
+            raise PermissionError("read_only_controls_cannot_approve")
         if operation not in {"APPROVE", "REJECT", "MORE_INVESTIGATION", "REVOKE"} or not reason.strip() or len(reason) > 1000:
             raise ValueError("invalid_action_approval_operation")
         preliminary = self.session.get(ActionApproval, approval_id)

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.14.0 - 2026-10-04
+
+- Added PostgreSQL-enforced read-only shadow control inspection, isolated constrained
+  results, concurrent deduplication and comparison with actual independent outcomes.
+- Added bounded historical evidence/decision replay and operational telemetry.
+- Preserved operational controls and execution authority; added PostgreSQL tests
+  and verified-backup migration tooling. See PHASE14_ACCEPTANCE.md.
+
 ## 0.13.0 - 2026-10-04
 
 - Recovered and freshly verified the complete Phase 12 checkpoint; newer reported

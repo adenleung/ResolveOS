@@ -30,6 +30,7 @@ class DatabaseManager:
         import app.execution.models  # noqa: F401
         import app.simulator.models  # noqa: F401
         import app.memory.models  # noqa: F401
+        import app.reliability.models  # noqa: F401
 
         Base.metadata.create_all(bind=self.engine)
 
