@@ -1,0 +1,18 @@
+{
+  "references": [
+    {
+      "name": "ResolveOS-phases1-16-playable.zip",
+      "sha256": "e61a541438141680429b800f8f3a36a3b45d9b76ef74554ab8dec17e58b23487",
+      "bytes": 3513726
+    },
+    {
+      "name": "ResolveOS-phase16.bundle",
+      "sha256": "6027bb1845f240a9300ea9eb1616011b9e84c3b9302a80335214cf00e9d8f75a",
+      "bytes": 1847723
+    }
+  ],
+  "original_zip": {
+    "entries": 305,
+    "crc_valid": true
+  }
+}

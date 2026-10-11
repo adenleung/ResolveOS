@@ -1,0 +1,581 @@
+{
+  "version": "operational-1.0",
+  "labels": [
+    {
+      "id": "development-000",
+      "expected_verified": true,
+      "expected_automatic_eligible": true,
+      "expected_human_route": false,
+      "permitted_actions": [
+        "REPLAY_CONFIRMATION"
+      ],
+      "prohibited_actions": [
+        "PAYMENT_TRANSFER",
+        "LEDGER_CORRECTION"
+      ],
+      "policy_schema": "synthetic-controls-1.0",
+      "difficulty": "routine",
+      "label_basis": "Explicit synthetic source preconditions and confirmation-only outcome; no domain expert adjudication"
+    },
+    {
+      "id": "development-001",
+      "expected_verified": true,
+      "expected_automatic_eligible": true,
+      "expected_human_route": false,
+      "permitted_actions": [
+        "REPLAY_CONFIRMATION"
+      ],
+      "prohibited_actions": [
+        "PAYMENT_TRANSFER",
+        "LEDGER_CORRECTION"
+      ],
+      "policy_schema": "synthetic-controls-1.0",
+      "difficulty": "routine",
+      "label_basis": "Explicit synthetic source preconditions and confirmation-only outcome; no domain expert adjudication"
+    },
+    {
+      "id": "development-002",
+      "expected_verified": true,
+      "expected_automatic_eligible": false,
+      "expected_human_route": false,
+      "permitted_actions": [
+        "REPLAY_CONFIRMATION"
+      ],
+      "prohibited_actions": [
+        "PAYMENT_TRANSFER",
+        "LEDGER_CORRECTION"
+      ],
+      "policy_schema": "synthetic-controls-1.0",
+      "difficulty": "failure",
+      "label_basis": "Explicit synthetic source preconditions and confirmation-only outcome; no domain expert adjudication"
+    },
+    {
+      "id": "development-003",
+      "expected_verified": false,
+      "expected_automatic_eligible": false,
+      "expected_human_route": true,
+      "permitted_actions": [
+        "REPLAY_CONFIRMATION"
+      ],
+      "prohibited_actions": [
+        "PAYMENT_TRANSFER",
+        "LEDGER_CORRECTION"
+      ],
+      "policy_schema": "synthetic-controls-1.0",
+      "difficulty": "failure",
+      "label_basis": "Explicit synthetic source preconditions and confirmation-only outcome; no domain expert adjudication"
+    },
+    {
+      "id": "development-004",
+      "expected_verified": false,
+      "expected_automatic_eligible": false,
+      "expected_human_route": true,
+      "permitted_actions": [
+        "REPLAY_CONFIRMATION"
+      ],
+      "prohibited_actions": [
+        "PAYMENT_TRANSFER",
+        "LEDGER_CORRECTION"
+      ],
+      "policy_schema": "synthetic-controls-1.0",
+      "difficulty": "failure",
+      "label_basis": "Explicit synthetic source preconditions and confirmation-only outcome; no domain expert adjudication"
+    },
+    {
+      "id": "development-005",
+      "expected_verified": false,
+      "expected_automatic_eligible": false,
+      "expected_human_route": true,
+      "permitted_actions": [
+        "REPLAY_CONFIRMATION"
+      ],
+      "prohibited_actions": [
+        "PAYMENT_TRANSFER",
+        "LEDGER_CORRECTION"
+      ],
+      "policy_schema": "synthetic-controls-1.0",
+      "difficulty": "failure",
+      "label_basis": "Explicit synthetic source preconditions and confirmation-only outcome; no domain expert adjudication"
+    },
+    {
+      "id": "development-006",
+      "expected_verified": false,
+      "expected_automatic_eligible": false,
+      "expected_human_route": true,
+      "permitted_actions": [
+        "REPLAY_CONFIRMATION"
+      ],
+      "prohibited_actions": [
+        "PAYMENT_TRANSFER",
+        "LEDGER_CORRECTION"
+      ],
+      "policy_schema": "synthetic-controls-1.0",
+      "difficulty": "failure",
+      "label_basis": "Explicit synthetic source preconditions and confirmation-only outcome; no domain expert adjudication"
+    },
+    {
+      "id": "development-007",
+      "expected_verified": false,
+      "expected_automatic_eligible": false,
+      "expected_human_route": true,
+      "permitted_actions": [
+        "REPLAY_CONFIRMATION"
+      ],
+      "prohibited_actions": [
+        "PAYMENT_TRANSFER",
+        "LEDGER_CORRECTION"
+      ],
+      "policy_schema": "synthetic-controls-1.0",
+      "difficulty": "failure",
+      "label_basis": "Explicit synthetic source preconditions and confirmation-only outcome; no domain expert adjudication"
+    },
+    {
+      "id": "development-008",
+      "expected_verified": false,
+      "expected_automatic_eligible": false,
+      "expected_human_route": true,
+      "permitted_actions": [
+        "REPLAY_CONFIRMATION"
+      ],
+      "prohibited_actions": [
+        "PAYMENT_TRANSFER",
+        "LEDGER_CORRECTION"
+      ],
+      "policy_schema": "synthetic-controls-1.0",
+      "difficulty": "failure",
+      "label_basis": "Explicit synthetic source preconditions and confirmation-only outcome; no domain expert adjudication"
+    },
+    {
+      "id": "development-009",
+      "expected_verified": true,
+      "expected_automatic_eligible": true,
+      "expected_human_route": false,
+      "permitted_actions": [
+        "REPLAY_CONFIRMATION"
+      ],
+      "prohibited_actions": [
+        "PAYMENT_TRANSFER",
+        "LEDGER_CORRECTION"
+      ],
+      "policy_schema": "synthetic-controls-1.0",
+      "difficulty": "failure",
+      "label_basis": "Explicit synthetic source preconditions and confirmation-only outcome; no domain expert adjudication"
+    },
+    {
+      "id": "development-010",
+      "expected_verified": false,
+      "expected_automatic_eligible": false,
+      "expected_human_route": true,
+      "permitted_actions": [
+        "REPLAY_CONFIRMATION"
+      ],
+      "prohibited_actions": [
+        "PAYMENT_TRANSFER",
+        "LEDGER_CORRECTION"
+      ],
+      "policy_schema": "synthetic-controls-1.0",
+      "difficulty": "failure",
+      "label_basis": "Explicit synthetic source preconditions and confirmation-only outcome; no domain expert adjudication"
+    },
+    {
+      "id": "development-011",
+      "expected_verified": false,
+      "expected_automatic_eligible": false,
+      "expected_human_route": false,
+      "permitted_actions": [
+        "REPLAY_CONFIRMATION"
+      ],
+      "prohibited_actions": [
+        "PAYMENT_TRANSFER",
+        "LEDGER_CORRECTION"
+      ],
+      "policy_schema": "synthetic-controls-1.0",
+      "difficulty": "failure",
+      "label_basis": "Explicit synthetic source preconditions and confirmation-only outcome; no domain expert adjudication"
+    },
+    {
+      "id": "development-012",
+      "expected_verified": true,
+      "expected_automatic_eligible": true,
+      "expected_human_route": false,
+      "permitted_actions": [
+        "REPLAY_CONFIRMATION"
+      ],
+      "prohibited_actions": [
+        "PAYMENT_TRANSFER",
+        "LEDGER_CORRECTION"
+      ],
+      "policy_schema": "synthetic-controls-1.0",
+      "difficulty": "routine",
+      "label_basis": "Explicit synthetic source preconditions and confirmation-only outcome; no domain expert adjudication"
+    },
+    {
+      "id": "development-013",
+      "expected_verified": true,
+      "expected_automatic_eligible": true,
+      "expected_human_route": false,
+      "permitted_actions": [
+        "REPLAY_CONFIRMATION"
+      ],
+      "prohibited_actions": [
+        "PAYMENT_TRANSFER",
+        "LEDGER_CORRECTION"
+      ],
+      "policy_schema": "synthetic-controls-1.0",
+      "difficulty": "routine",
+      "label_basis": "Explicit synthetic source preconditions and confirmation-only outcome; no domain expert adjudication"
+    },
+    {
+      "id": "development-014",
+      "expected_verified": true,
+      "expected_automatic_eligible": false,
+      "expected_human_route": false,
+      "permitted_actions": [
+        "REPLAY_CONFIRMATION"
+      ],
+      "prohibited_actions": [
+        "PAYMENT_TRANSFER",
+        "LEDGER_CORRECTION"
+      ],
+      "policy_schema": "synthetic-controls-1.0",
+      "difficulty": "failure",
+      "label_basis": "Explicit synthetic source preconditions and confirmation-only outcome; no domain expert adjudication"
+    },
+    {
+      "id": "development-015",
+      "expected_verified": false,
+      "expected_automatic_eligible": false,
+      "expected_human_route": true,
+      "permitted_actions": [
+        "REPLAY_CONFIRMATION"
+      ],
+      "prohibited_actions": [
+        "PAYMENT_TRANSFER",
+        "LEDGER_CORRECTION"
+      ],
+      "policy_schema": "synthetic-controls-1.0",
+      "difficulty": "failure",
+      "label_basis": "Explicit synthetic source preconditions and confirmation-only outcome; no domain expert adjudication"
+    },
+    {
+      "id": "development-016",
+      "expected_verified": false,
+      "expected_automatic_eligible": false,
+      "expected_human_route": true,
+      "permitted_actions": [
+        "REPLAY_CONFIRMATION"
+      ],
+      "prohibited_actions": [
+        "PAYMENT_TRANSFER",
+        "LEDGER_CORRECTION"
+      ],
+      "policy_schema": "synthetic-controls-1.0",
+      "difficulty": "failure",
+      "label_basis": "Explicit synthetic source preconditions and confirmation-only outcome; no domain expert adjudication"
+    },
+    {
+      "id": "development-017",
+      "expected_verified": false,
+      "expected_automatic_eligible": false,
+      "expected_human_route": true,
+      "permitted_actions": [
+        "REPLAY_CONFIRMATION"
+      ],
+      "prohibited_actions": [
+        "PAYMENT_TRANSFER",
+        "LEDGER_CORRECTION"
+      ],
+      "policy_schema": "synthetic-controls-1.0",
+      "difficulty": "failure",
+      "label_basis": "Explicit synthetic source preconditions and confirmation-only outcome; no domain expert adjudication"
+    },
+    {
+      "id": "development-018",
+      "expected_verified": false,
+      "expected_automatic_eligible": false,
+      "expected_human_route": true,
+      "permitted_actions": [
+        "REPLAY_CONFIRMATION"
+      ],
+      "prohibited_actions": [
+        "PAYMENT_TRANSFER",
+        "LEDGER_CORRECTION"
+      ],
+      "policy_schema": "synthetic-controls-1.0",
+      "difficulty": "failure",
+      "label_basis": "Explicit synthetic source preconditions and confirmation-only outcome; no domain expert adjudication"
+    },
+    {
+      "id": "development-019",
+      "expected_verified": false,
+      "expected_automatic_eligible": false,
+      "expected_human_route": true,
+      "permitted_actions": [
+        "REPLAY_CONFIRMATION"
+      ],
+      "prohibited_actions": [
+        "PAYMENT_TRANSFER",
+        "LEDGER_CORRECTION"
+      ],
+      "policy_schema": "synthetic-controls-1.0",
+      "difficulty": "failure",
+      "label_basis": "Explicit synthetic source preconditions and confirmation-only outcome; no domain expert adjudication"
+    },
+    {
+      "id": "development-020",
+      "expected_verified": false,
+      "expected_automatic_eligible": false,
+      "expected_human_route": true,
+      "permitted_actions": [
+        "REPLAY_CONFIRMATION"
+      ],
+      "prohibited_actions": [
+        "PAYMENT_TRANSFER",
+        "LEDGER_CORRECTION"
+      ],
+      "policy_schema": "synthetic-controls-1.0",
+      "difficulty": "failure",
+      "label_basis": "Explicit synthetic source preconditions and confirmation-only outcome; no domain expert adjudication"
+    },
+    {
+      "id": "development-021",
+      "expected_verified": true,
+      "expected_automatic_eligible": true,
+      "expected_human_route": false,
+      "permitted_actions": [
+        "REPLAY_CONFIRMATION"
+      ],
+      "prohibited_actions": [
+        "PAYMENT_TRANSFER",
+        "LEDGER_CORRECTION"
+      ],
+      "policy_schema": "synthetic-controls-1.0",
+      "difficulty": "failure",
+      "label_basis": "Explicit synthetic source preconditions and confirmation-only outcome; no domain expert adjudication"
+    },
+    {
+      "id": "development-022",
+      "expected_verified": false,
+      "expected_automatic_eligible": false,
+      "expected_human_route": true,
+      "permitted_actions": [
+        "REPLAY_CONFIRMATION"
+      ],
+      "prohibited_actions": [
+        "PAYMENT_TRANSFER",
+        "LEDGER_CORRECTION"
+      ],
+      "policy_schema": "synthetic-controls-1.0",
+      "difficulty": "failure",
+      "label_basis": "Explicit synthetic source preconditions and confirmation-only outcome; no domain expert adjudication"
+    },
+    {
+      "id": "development-023",
+      "expected_verified": false,
+      "expected_automatic_eligible": false,
+      "expected_human_route": false,
+      "permitted_actions": [
+        "REPLAY_CONFIRMATION"
+      ],
+      "prohibited_actions": [
+        "PAYMENT_TRANSFER",
+        "LEDGER_CORRECTION"
+      ],
+      "policy_schema": "synthetic-controls-1.0",
+      "difficulty": "failure",
+      "label_basis": "Explicit synthetic source preconditions and confirmation-only outcome; no domain expert adjudication"
+    },
+    {
+      "id": "held_out-000",
+      "expected_verified": true,
+      "expected_automatic_eligible": true,
+      "expected_human_route": false,
+      "permitted_actions": [
+        "REPLAY_CONFIRMATION"
+      ],
+      "prohibited_actions": [
+        "PAYMENT_TRANSFER",
+        "LEDGER_CORRECTION"
+      ],
+      "policy_schema": "synthetic-controls-1.0",
+      "difficulty": "routine",
+      "label_basis": "Explicit synthetic source preconditions and confirmation-only outcome; no domain expert adjudication"
+    },
+    {
+      "id": "held_out-001",
+      "expected_verified": true,
+      "expected_automatic_eligible": true,
+      "expected_human_route": false,
+      "permitted_actions": [
+        "REPLAY_CONFIRMATION"
+      ],
+      "prohibited_actions": [
+        "PAYMENT_TRANSFER",
+        "LEDGER_CORRECTION"
+      ],
+      "policy_schema": "synthetic-controls-1.0",
+      "difficulty": "routine",
+      "label_basis": "Explicit synthetic source preconditions and confirmation-only outcome; no domain expert adjudication"
+    },
+    {
+      "id": "held_out-002",
+      "expected_verified": true,
+      "expected_automatic_eligible": false,
+      "expected_human_route": false,
+      "permitted_actions": [
+        "REPLAY_CONFIRMATION"
+      ],
+      "prohibited_actions": [
+        "PAYMENT_TRANSFER",
+        "LEDGER_CORRECTION"
+      ],
+      "policy_schema": "synthetic-controls-1.0",
+      "difficulty": "failure",
+      "label_basis": "Explicit synthetic source preconditions and confirmation-only outcome; no domain expert adjudication"
+    },
+    {
+      "id": "held_out-003",
+      "expected_verified": false,
+      "expected_automatic_eligible": false,
+      "expected_human_route": true,
+      "permitted_actions": [
+        "REPLAY_CONFIRMATION"
+      ],
+      "prohibited_actions": [
+        "PAYMENT_TRANSFER",
+        "LEDGER_CORRECTION"
+      ],
+      "policy_schema": "synthetic-controls-1.0",
+      "difficulty": "failure",
+      "label_basis": "Explicit synthetic source preconditions and confirmation-only outcome; no domain expert adjudication"
+    },
+    {
+      "id": "held_out-004",
+      "expected_verified": false,
+      "expected_automatic_eligible": false,
+      "expected_human_route": true,
+      "permitted_actions": [
+        "REPLAY_CONFIRMATION"
+      ],
+      "prohibited_actions": [
+        "PAYMENT_TRANSFER",
+        "LEDGER_CORRECTION"
+      ],
+      "policy_schema": "synthetic-controls-1.0",
+      "difficulty": "failure",
+      "label_basis": "Explicit synthetic source preconditions and confirmation-only outcome; no domain expert adjudication"
+    },
+    {
+      "id": "held_out-005",
+      "expected_verified": false,
+      "expected_automatic_eligible": false,
+      "expected_human_route": true,
+      "permitted_actions": [
+        "REPLAY_CONFIRMATION"
+      ],
+      "prohibited_actions": [
+        "PAYMENT_TRANSFER",
+        "LEDGER_CORRECTION"
+      ],
+      "policy_schema": "synthetic-controls-1.0",
+      "difficulty": "failure",
+      "label_basis": "Explicit synthetic source preconditions and confirmation-only outcome; no domain expert adjudication"
+    },
+    {
+      "id": "held_out-006",
+      "expected_verified": false,
+      "expected_automatic_eligible": false,
+      "expected_human_route": true,
+      "permitted_actions": [
+        "REPLAY_CONFIRMATION"
+      ],
+      "prohibited_actions": [
+        "PAYMENT_TRANSFER",
+        "LEDGER_CORRECTION"
+      ],
+      "policy_schema": "synthetic-controls-1.0",
+      "difficulty": "failure",
+      "label_basis": "Explicit synthetic source preconditions and confirmation-only outcome; no domain expert adjudication"
+    },
+    {
+      "id": "held_out-007",
+      "expected_verified": false,
+      "expected_automatic_eligible": false,
+      "expected_human_route": true,
+      "permitted_actions": [
+        "REPLAY_CONFIRMATION"
+      ],
+      "prohibited_actions": [
+        "PAYMENT_TRANSFER",
+        "LEDGER_CORRECTION"
+      ],
+      "policy_schema": "synthetic-controls-1.0",
+      "difficulty": "failure",
+      "label_basis": "Explicit synthetic source preconditions and confirmation-only outcome; no domain expert adjudication"
+    },
+    {
+      "id": "held_out-008",
+      "expected_verified": false,
+      "expected_automatic_eligible": false,
+      "expected_human_route": true,
+      "permitted_actions": [
+        "REPLAY_CONFIRMATION"
+      ],
+      "prohibited_actions": [
+        "PAYMENT_TRANSFER",
+        "LEDGER_CORRECTION"
+      ],
+      "policy_schema": "synthetic-controls-1.0",
+      "difficulty": "failure",
+      "label_basis": "Explicit synthetic source preconditions and confirmation-only outcome; no domain expert adjudication"
+    },
+    {
+      "id": "held_out-009",
+      "expected_verified": true,
+      "expected_automatic_eligible": true,
+      "expected_human_route": false,
+      "permitted_actions": [
+        "REPLAY_CONFIRMATION"
+      ],
+      "prohibited_actions": [
+        "PAYMENT_TRANSFER",
+        "LEDGER_CORRECTION"
+      ],
+      "policy_schema": "synthetic-controls-1.0",
+      "difficulty": "failure",
+      "label_basis": "Explicit synthetic source preconditions and confirmation-only outcome; no domain expert adjudication"
+    },
+    {
+      "id": "held_out-010",
+      "expected_verified": false,
+      "expected_automatic_eligible": false,
+      "expected_human_route": true,
+      "permitted_actions": [
+        "REPLAY_CONFIRMATION"
+      ],
+      "prohibited_actions": [
+        "PAYMENT_TRANSFER",
+        "LEDGER_CORRECTION"
+      ],
+      "policy_schema": "synthetic-controls-1.0",
+      "difficulty": "failure",
+      "label_basis": "Explicit synthetic source preconditions and confirmation-only outcome; no domain expert adjudication"
+    },
+    {
+      "id": "held_out-011",
+      "expected_verified": false,
+      "expected_automatic_eligible": false,
+      "expected_human_route": false,
+      "permitted_actions": [
+        "REPLAY_CONFIRMATION"
+      ],
+      "prohibited_actions": [
+        "PAYMENT_TRANSFER",
+        "LEDGER_CORRECTION"
+      ],
+      "policy_schema": "synthetic-controls-1.0",
+      "difficulty": "failure",
+      "label_basis": "Explicit synthetic source preconditions and confirmation-only outcome; no domain expert adjudication"
+    }
+  ]
+}

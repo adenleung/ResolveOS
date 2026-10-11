@@ -139,15 +139,21 @@ def policy(session, label, human):
     return row
 
 
-def build_journeys(database, settings):
+def build_journeys(database, settings, *, correlate=False):
     # Called only inside a verifier-owned disposable database or newly created demo DB.
     with database.get_session() as session:
         name = session.scalar(text("SELECT current_database()"))
         assert re.fullmatch(r"resolveos_(demo|backend_verify)_[0-9a-f]{10}", name)
         assert session.scalar(select(func.count()).select_from(Case)) == 0, "Refusing to reseed populated data"
         cases = {label: seed_source(session, label, label == "B") for label in "ABC"}
+        correlation = None
+        if correlate:
+            from app.correlation.service import IncidentCorrelationService
+            correlation = IncidentCorrelationService(session).run(case_ids=[row[0] for row in cases.values()])
     drain(database, settings)
     manifest = {"database": name, "provider": "offline deterministic demo over actual source evidence; no external calls", "journeys": {}}
+    if correlate:
+        manifest["correlation_run"] = correlation
     for label in "AC":
         case_id, exception_id = cases[label]
         with database.get_session() as session:

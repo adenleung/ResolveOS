@@ -4,6 +4,7 @@ Lock order: source Case, OperationalMemory, then MemoryVersion. No commit here:
 publication, supersession, review history and audit are one atomic transaction.
 """
 from uuid import uuid4
+from datetime import datetime
 import json
 
 from sqlalchemy import func, select
@@ -313,9 +314,16 @@ class MemoryService:
             "policy_version_id", "governance_version", "reviewer", "reviewed_at", "supersedes_id",
             "created_at", "updated_at")}
 
-    def retrieve(self, case_id, category, access, *, top_k=5, context_bytes=8000, source_systems=()):
+    def retrieve(self, case_id, category, access, *, top_k=5, context_bytes=8000, source_systems=(), as_of=None, ranking_version="overlap-recency-1.0"):
         self.require(access, case_id)
         self.case(case_id)
+        now = utc(self.now())
+        if as_of is not None and (not isinstance(as_of, datetime) or as_of.tzinfo is None or utc(as_of) > now):
+            raise ValueError("memory_information_window_invalid")
+        cutoff = utc(as_of) if as_of is not None else now
+        from app.memory.ranking import BASELINE, OPTION_B, signatures, contributions
+        if ranking_version not in {BASELINE, OPTION_B}:
+            raise ValueError("memory_ranking_version_invalid")
         if not isinstance(category, str) or not 1 <= len(category) <= 200 or type(top_k) is not int or not 1 <= top_k <= 10 or type(context_bytes) is not int or not 512 <= context_bytes <= 16000:
             raise ValueError("memory_retrieval_bounds_invalid")
         if not self.session.scalar(select(ExceptionRecord.id).where(ExceptionRecord.case_id == case_id,
@@ -323,12 +331,24 @@ class MemoryService:
             raise PermissionError("memory_category_outside_case")
         query = select(MemoryVersion, OperationalMemory.case_id).join(OperationalMemory,
             OperationalMemory.id == MemoryVersion.memory_id).where(MemoryVersion.category == category,
-            MemoryVersion.status == "ACTIVE", OperationalMemory.case_id != case_id)
+            MemoryVersion.status == "ACTIVE", OperationalMemory.case_id != case_id,
+            MemoryVersion.created_at <= cutoff, MemoryVersion.reviewed_at <= cutoff)
         if access.case_ids is not None:
             query = query.where(OperationalMemory.case_id.in_(sorted(access.case_ids)))
         # Indexed category/status/time window. No fuzzy scans or vector dependencies.
         candidates = self.session.execute(query.order_by(MemoryVersion.created_at.desc(), MemoryVersion.id.desc())
             .limit(50)).all()
+        current_signatures = {}
+        if ranking_version == OPTION_B:
+            entities = select(ExceptionRecord.source_reference).where(ExceptionRecord.case_id == case_id)
+            observations = select(EventRecord).where(EventRecord.entity_reference.in_(entities),
+                EventRecord.occurred_at <= cutoff, EventRecord.ingested_at <= cutoff)
+            if access.source_systems is not None:
+                observations = observations.where(EventRecord.source_system.in_(sorted(access.source_systems)))
+            observed = self.session.scalars(observations.order_by(EventRecord.occurred_at.desc(), EventRecord.id.desc()).limit(101)).all()
+            if len(observed) > 100:
+                raise ValueError("memory_ranking_source_window_truncated")
+            current_signatures = signatures([clean_payload(event.payload) for event in observed])
         matches = []
         for version, historical_case_id in candidates:
             self.require(access, historical_case_id)
@@ -357,6 +377,8 @@ class MemoryService:
             systems = sorted({evidence.source_system for evidence, _, _ in refs})
             overlap = len(set(systems).intersection(source_systems))
             verification = self.session.get(VerificationResult, version.verification_id)
+            if utc(verification.created_at) > cutoff:
+                continue
             item = {"id": version.id, "memory_id": version.memory_id, "version": version.version,
                 "historical_case_id": historical_case_id, "failure_pattern": version.failure_pattern,
                 "summary": version.summary, "verified_outcome": "INDEPENDENTLY_VERIFIED_SYNTHETIC_CONFIRMATION",
@@ -375,8 +397,13 @@ class MemoryService:
                     "Reviewer summary is untrusted historical interpretation; query current evidence.",
                     "Every new action requires current independent controls and authorization."]}
             matches.append(item)
+            if ranking_version == OPTION_B:
+                features = contributions(current, overlap, current_signatures,
+                    signatures([clean_payload(event.payload) for _, event, _ in refs]))
+                item["similarity"].update(ranking_version=OPTION_B, feature_contributions=features,
+                    relevance_score=sum(features.values()), explanation="Exact structured matches and current-policy guidance; score is not probability or proof of cause")
         # Stable recency within equal overlap (candidate input is already newest first).
-        matches.sort(key=lambda row: -row["similarity"]["source_overlap"])
+        matches.sort(key=lambda row: -row["similarity"].get("relevance_score",row["similarity"]["source_overlap"]))
         result = {"status": "MISSING", "label": LABEL, "action_authorization": "NOT_EVALUATED",
             "evidence": [], "memories": [], "truncated": len(candidates) == 50}
         for item in matches[:top_k]:
@@ -390,7 +417,8 @@ class MemoryService:
         result["truncated"] = result["truncated"] or len(matches) > len(result["memories"])
         self.session.add(MemoryRetrieval(id=str(uuid4()), case_id=case_id, actor=access.identity.user_id,
             category=category, version_ids=[row["id"] for row in result["memories"]],
-            limits={"top_k": top_k, "context_bytes": context_bytes, "candidate_limit": 50}, created_at=self.now()))
+            limits={"top_k": top_k, "context_bytes": context_bytes, "candidate_limit": 50,
+                "information_window": cutoff.isoformat(), "ranking_version": ranking_version}, created_at=self.now()))
         self.session.flush()
         return result
 

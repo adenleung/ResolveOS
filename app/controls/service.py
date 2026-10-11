@@ -81,7 +81,8 @@ class Controls:
         bank_ledger, bank_confirmation = [], []
         if payment:
             bank_ledger = [dict(row) for row in self.session.execute(self.lock(select(SyntheticLedgerEntry.ledger_transaction_id,
-                SyntheticLedgerEntry.entry_type, SyntheticLedgerEntry.status, SyntheticLedgerEntry.amount, SyntheticLedgerEntry.currency)
+                SyntheticLedgerEntry.entry_type, SyntheticLedgerEntry.status, SyntheticLedgerEntry.amount, SyntheticLedgerEntry.currency,
+                SyntheticLedgerEntry.balance_after)
                 .where(SyntheticLedgerEntry.payment_id == payment["id"]).order_by(SyntheticLedgerEntry.id)
                 .limit(1001))).mappings()]
             bank_confirmation = [dict(row) for row in self.session.execute(self.lock(select(SyntheticConfirmationEvent.event_id,

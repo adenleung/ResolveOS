@@ -14,6 +14,7 @@
 - Phase 12: dataset-inadequate offline evaluation/governance accepted (311 full / 43 targeted tests); training blocked, trained path unverified, no model enabled. See PHASE12_ACCEPTANCE.md.
 - Phase 13: evidence-backed intelligence implemented; acceptance and remote checkpoint in PHASE13_ACCEPTANCE.md.
 - Phase 14: shadow isolation, recorded decision replay, outcome comparison and reliability telemetry; validation in PHASE14_ACCEPTANCE.md.
+- Phase 16: first playable pixel operations visualization on a dedicated branch; frontend verified, real PostgreSQL journeys and GitHub push blocked/unverified. See PHASE16_ACCEPTANCE.md.
 - Phase 15: protected nine-module operations workbench and three persisted isolated demos accepted; see PHASE15_ACCEPTANCE.md.
 
 Current implementation checkpoint: **Phase 15 operations workbench**; exact acceptance, migration and remote checkpoint status are in PHASE14_ACCEPTANCE.md. Rules remain active; no ML model is enabled. Source Alembic is `20261004_0013`; development upgrade requires verified backup restoration and unchanged source-row hashes. Phase 15 was built after the separately validated, pushed and verified Phase 14 checkpoint.

@@ -6,7 +6,7 @@ from typing import Any, Iterable
 from uuid import uuid4
 
 from pydantic import ValidationError
-from sqlalchemy import func, select
+from sqlalchemy import func, select, update
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 from sqlalchemy.orm import Session
 
@@ -30,6 +30,31 @@ class EventIngestionService:
     def __init__(self, session: Session, adapters: SyntheticSourceAdapters | None = None):
         self.session = session
         self.adapters = adapters or SyntheticSourceAdapters()
+
+    def duplicate(self, existing, event, stats):
+        """Same transport identity must describe the same immutable observation."""
+        fields = ("event_type", "entity_reference", "correlation_id", "schema_version",
+                  "source_record_reference")
+        timestamp = existing.occurred_at
+        if timestamp.tzinfo is None:
+            timestamp = timestamp.replace(tzinfo=timezone.utc)
+        same = timestamp == event.occurred_at and all(
+            getattr(existing, field) == getattr(event, field) for field in fields)
+        same = same and json.dumps(existing.payload,sort_keys=True,default=str) == json.dumps(event.payload,sort_keys=True,default=str)
+        if not same:
+            self.session.add(IngestionError(id=str(uuid4()), source_system=event.source_system,
+                source_record_reference=event.source_record_reference,
+                raw_payload=_json_safe(event.model_dump()), error_message="event_identity_content_conflict"))
+            self.session.commit()
+            stats["rejected"] += 1
+            stats["errors"].append({"source_record_reference": event.source_record_reference,
+                                    "message": "event_identity_content_conflict"})
+            return
+        # Database arithmetic prevents lost receipt counts across concurrent retries.
+        self.session.execute(update(EventRecord).where(EventRecord.id == existing.id)
+            .values(duplicate_receipts=EventRecord.duplicate_receipts + 1))
+        self.session.commit()
+        stats["duplicates"] += 1
 
     def ingest_synthetic(self) -> dict[str, Any]:
         return self.ingest(self.adapters.collect(self.session))
@@ -61,9 +86,7 @@ class EventIngestionService:
                 )
             ).scalar_one_or_none()
             if existing is not None:
-                existing.duplicate_receipts += 1
-                stats["duplicates"] += 1
-                self.session.commit()
+                self.duplicate(existing, event, stats)
                 continue
 
             row = EventRecord(
@@ -96,9 +119,7 @@ class EventIngestionService:
                 ).scalar_one_or_none()
                 if raced is None:
                     raise
-                raced.duplicate_receipts += 1
-                self.session.commit()
-                stats["duplicates"] += 1
+                self.duplicate(raced, event, stats)
             except Exception as exc:
                 self.session.rollback()
                 error = IngestionError(

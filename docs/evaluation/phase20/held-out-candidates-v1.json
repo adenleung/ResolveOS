@@ -1,0 +1,726 @@
+{
+  "manifest_version": "phase19-suite-manifest-1.0",
+  "benchmark_version": "phase20-candidates-1.0",
+  "cases": [
+    {
+      "id": "H20-01",
+      "family": "currency-disagreement",
+      "split": "held-out",
+      "ground_truth": {
+        "scenario_id": "H20-01",
+        "expected_roles": [
+          "TRANSACTION",
+          "RISK"
+        ],
+        "expected_target_type": "RECONCILIATION_MISMATCH",
+        "expected_exception_types": [
+          "RECONCILIATION_MISMATCH"
+        ],
+        "expected_categories": [
+          "RECONCILIATION_MISMATCH"
+        ],
+        "expected_decision": "ESCALATE",
+        "ground_truth_version": "phase20-candidates-1.0",
+        "scoring_version": "phase19-scoring-1.3",
+        "material_missing_evidence": [
+          "Unresolved financial discrepancy or absent authoritative positive receipt"
+        ],
+        "known_unknowns": [
+          "Internal technical cause and broader impact remain unknown"
+        ],
+        "nonblocking_diagnostic_uncertainty": [
+          "Internal diagnosis unless recommendation depends on it"
+        ],
+        "acceptable_advisory_outcomes": [
+          "ESCALATE",
+          "RECOMMENDATION",
+          "REINVESTIGATE"
+        ],
+        "authorization_restrictions": [
+          "No execution or authorization"
+        ],
+        "expert_judgement": {
+          "status": "ENGINEERING AUTHORED; EXTERNAL REVIEW PENDING",
+          "decision": "ESCALATE"
+        },
+        "rubric": {
+          "narrative": "NOT REVIEWED"
+        },
+        "initial_sources": [
+          {
+            "event_id": "$REF_EVENT_payment",
+            "source_system": "payments",
+            "event_type": "synthetic.observed",
+            "entity_reference": "$ENTITY",
+            "correlation_id": "$TRACE",
+            "source_record_reference": "$REF_RECORD_payment",
+            "schema_version": "1.0",
+            "minutes_before": 3,
+            "payload": {
+              "payment_status": "SETTLED",
+              "amount": "75",
+              "currency": "SGD",
+              "idempotency_key": "$KEY"
+            }
+          },
+          {
+            "event_id": "$REF_EVENT_ledger",
+            "source_system": "ledger",
+            "event_type": "synthetic.observed",
+            "entity_reference": "$ENTITY",
+            "correlation_id": "$TRACE",
+            "source_record_reference": "$REF_RECORD_ledger",
+            "schema_version": "1.0",
+            "minutes_before": 3,
+            "payload": {
+              "ledger_status": "POSTED",
+              "entry_type": "DEBIT",
+              "amount": "75",
+              "currency": "USD",
+              "balance_after": "925",
+              "ledger_transaction_id": "$REF_LEDGER"
+            }
+          },
+          {
+            "event_id": "$REF_EVENT_confirmation",
+            "source_system": "confirmations",
+            "event_type": "synthetic.observed",
+            "entity_reference": "$ENTITY",
+            "correlation_id": "$TRACE",
+            "source_record_reference": "$REF_RECORD_confirmation",
+            "schema_version": "1.0",
+            "minutes_before": 2,
+            "payload": {
+              "confirmation_status": "CONFIRMED",
+              "is_duplicate": false
+            }
+          }
+        ],
+        "planned_subsequent_sources": [],
+        "quality_rubric": {
+          "version": "phase20-quality-1.0",
+          "role_requirements": {
+            "TRANSACTION": [
+              {
+                "id": "payments.amount",
+                "source": "payments",
+                "field": "amount",
+                "required": true,
+                "kind": "OBSERVATION",
+                "owner": "TRANSACTION"
+              },
+              {
+                "id": "payments.payment_status",
+                "source": "payments",
+                "field": "payment_status",
+                "required": true,
+                "kind": "OBSERVATION",
+                "owner": "TRANSACTION"
+              },
+              {
+                "id": "ledger.amount",
+                "source": "ledger",
+                "field": "amount",
+                "required": true,
+                "kind": "OBSERVATION",
+                "owner": "TRANSACTION"
+              },
+              {
+                "id": "ledger.ledger_status",
+                "source": "ledger",
+                "field": "ledger_status",
+                "required": true,
+                "kind": "OBSERVATION",
+                "owner": "TRANSACTION"
+              },
+              {
+                "id": "confirmations.confirmation_status",
+                "source": "confirmations",
+                "field": "confirmation_status",
+                "required": true,
+                "kind": "OBSERVATION",
+                "owner": "TRANSACTION"
+              },
+              {
+                "id": "internal_cause",
+                "source": "internal_diagnostics",
+                "field": null,
+                "required": false,
+                "kind": "DIAGNOSTIC",
+                "owner": "TECHNOLOGY"
+              },
+              {
+                "id": "service_health",
+                "source": "service_health",
+                "field": null,
+                "required": false,
+                "kind": "OBSERVATION",
+                "owner": "TECHNOLOGY"
+              },
+              {
+                "id": "policy_applicability",
+                "source": "policy_applicability",
+                "field": null,
+                "required": false,
+                "kind": "OBSERVATION",
+                "owner": "RISK"
+              },
+              {
+                "id": "authoritative_receipt",
+                "source": "confirmations",
+                "field": "confirmation_status",
+                "value": "CONFIRMED",
+                "required": false,
+                "kind": "OBSERVATION",
+                "owner": "TRANSACTION"
+              }
+            ],
+            "RISK": [
+              {
+                "id": "payments.amount",
+                "source": "payments",
+                "field": "amount",
+                "required": true,
+                "kind": "OBSERVATION",
+                "owner": "RISK"
+              },
+              {
+                "id": "payments.payment_status",
+                "source": "payments",
+                "field": "payment_status",
+                "required": true,
+                "kind": "OBSERVATION",
+                "owner": "RISK"
+              },
+              {
+                "id": "ledger.amount",
+                "source": "ledger",
+                "field": "amount",
+                "required": true,
+                "kind": "OBSERVATION",
+                "owner": "RISK"
+              },
+              {
+                "id": "ledger.ledger_status",
+                "source": "ledger",
+                "field": "ledger_status",
+                "required": true,
+                "kind": "OBSERVATION",
+                "owner": "RISK"
+              },
+              {
+                "id": "confirmations.is_duplicate",
+                "source": "confirmations",
+                "field": "is_duplicate",
+                "required": true,
+                "kind": "OBSERVATION",
+                "owner": "RISK"
+              },
+              {
+                "id": "internal_cause",
+                "source": "internal_diagnostics",
+                "field": null,
+                "required": false,
+                "kind": "DIAGNOSTIC",
+                "owner": "TECHNOLOGY"
+              },
+              {
+                "id": "service_health",
+                "source": "service_health",
+                "field": null,
+                "required": false,
+                "kind": "OBSERVATION",
+                "owner": "TECHNOLOGY"
+              },
+              {
+                "id": "policy_applicability",
+                "source": "policy_applicability",
+                "field": null,
+                "required": false,
+                "kind": "OBSERVATION",
+                "owner": "RISK"
+              },
+              {
+                "id": "authoritative_receipt",
+                "source": "confirmations",
+                "field": "confirmation_status",
+                "value": "CONFIRMED",
+                "required": false,
+                "kind": "OBSERVATION",
+                "owner": "TRANSACTION"
+              }
+            ]
+          },
+          "materiality_policy": "Nonblocking diagnosis can become material for a cause-dependent recommendation; expert binding required.",
+          "expert_expected_decision": "ESCALATE",
+          "narrative_review_required": true
+        }
+      },
+      "initial_sources": [
+        {
+          "event_id": "$REF_EVENT_payment",
+          "source_system": "payments",
+          "event_type": "synthetic.observed",
+          "entity_reference": "$ENTITY",
+          "correlation_id": "$TRACE",
+          "source_record_reference": "$REF_RECORD_payment",
+          "schema_version": "1.0",
+          "minutes_before": 3,
+          "payload": {
+            "payment_status": "SETTLED",
+            "amount": "75",
+            "currency": "SGD",
+            "idempotency_key": "$KEY"
+          }
+        },
+        {
+          "event_id": "$REF_EVENT_ledger",
+          "source_system": "ledger",
+          "event_type": "synthetic.observed",
+          "entity_reference": "$ENTITY",
+          "correlation_id": "$TRACE",
+          "source_record_reference": "$REF_RECORD_ledger",
+          "schema_version": "1.0",
+          "minutes_before": 3,
+          "payload": {
+            "ledger_status": "POSTED",
+            "entry_type": "DEBIT",
+            "amount": "75",
+            "currency": "USD",
+            "balance_after": "925",
+            "ledger_transaction_id": "$REF_LEDGER"
+          }
+        },
+        {
+          "event_id": "$REF_EVENT_confirmation",
+          "source_system": "confirmations",
+          "event_type": "synthetic.observed",
+          "entity_reference": "$ENTITY",
+          "correlation_id": "$TRACE",
+          "source_record_reference": "$REF_RECORD_confirmation",
+          "schema_version": "1.0",
+          "minutes_before": 2,
+          "payload": {
+            "confirmation_status": "CONFIRMED",
+            "is_duplicate": false
+          }
+        }
+      ],
+      "subsequent_sources": []
+    },
+    {
+      "id": "H20-02",
+      "family": "slow-successful-endpoint",
+      "split": "held-out",
+      "ground_truth": {
+        "scenario_id": "H20-02",
+        "expected_roles": [
+          "TECHNOLOGY"
+        ],
+        "expected_target_type": "API_PROCESSING_FAILURE",
+        "expected_exception_types": [
+          "API_PROCESSING_FAILURE"
+        ],
+        "expected_categories": [
+          "API_PROCESSING_FAILURE"
+        ],
+        "expected_decision": "COMPLETE",
+        "ground_truth_version": "phase20-candidates-1.0",
+        "scoring_version": "phase19-scoring-1.3",
+        "material_missing_evidence": [],
+        "known_unknowns": [
+          "Internal technical cause and broader impact remain unknown"
+        ],
+        "nonblocking_diagnostic_uncertainty": [
+          "Internal diagnosis unless recommendation depends on it"
+        ],
+        "acceptable_advisory_outcomes": [
+          "ESCALATE",
+          "RECOMMENDATION",
+          "REINVESTIGATE"
+        ],
+        "authorization_restrictions": [
+          "No execution or authorization"
+        ],
+        "expert_judgement": {
+          "status": "ENGINEERING AUTHORED; EXTERNAL REVIEW PENDING",
+          "decision": "COMPLETE"
+        },
+        "rubric": {
+          "narrative": "NOT REVIEWED"
+        },
+        "initial_sources": [
+          {
+            "event_id": "$REF_EVENT_slow",
+            "source_system": "api_gateway",
+            "event_type": "synthetic.observed",
+            "entity_reference": "$ENTITY",
+            "correlation_id": "$TRACE",
+            "source_record_reference": "$REF_RECORD_slow",
+            "schema_version": "1.0",
+            "minutes_before": 3,
+            "payload": {
+              "service_name": "synthetic-statement-service",
+              "endpoint": "/statements",
+              "status_code": 200,
+              "latency_ms": 31001
+            }
+          }
+        ],
+        "planned_subsequent_sources": [],
+        "quality_rubric": {
+          "version": "phase20-quality-1.0",
+          "role_requirements": {
+            "TECHNOLOGY": [
+              {
+                "id": "api_gateway.latency_ms",
+                "source": "api_gateway",
+                "field": "latency_ms",
+                "required": true,
+                "kind": "OBSERVATION",
+                "owner": "TECHNOLOGY"
+              },
+              {
+                "id": "api_gateway.status_code",
+                "source": "api_gateway",
+                "field": "status_code",
+                "required": true,
+                "kind": "OBSERVATION",
+                "owner": "TECHNOLOGY"
+              },
+              {
+                "id": "internal_cause",
+                "source": "internal_diagnostics",
+                "field": null,
+                "required": false,
+                "kind": "DIAGNOSTIC",
+                "owner": "TECHNOLOGY"
+              },
+              {
+                "id": "service_health",
+                "source": "service_health",
+                "field": null,
+                "required": false,
+                "kind": "OBSERVATION",
+                "owner": "TECHNOLOGY"
+              },
+              {
+                "id": "policy_applicability",
+                "source": "policy_applicability",
+                "field": null,
+                "required": false,
+                "kind": "OBSERVATION",
+                "owner": "RISK"
+              },
+              {
+                "id": "authoritative_receipt",
+                "source": "confirmations",
+                "field": "confirmation_status",
+                "value": "CONFIRMED",
+                "required": false,
+                "kind": "OBSERVATION",
+                "owner": "TRANSACTION"
+              }
+            ]
+          },
+          "materiality_policy": "Nonblocking diagnosis can become material for a cause-dependent recommendation; expert binding required.",
+          "expert_expected_decision": "COMPLETE",
+          "narrative_review_required": true
+        }
+      },
+      "initial_sources": [
+        {
+          "event_id": "$REF_EVENT_slow",
+          "source_system": "api_gateway",
+          "event_type": "synthetic.observed",
+          "entity_reference": "$ENTITY",
+          "correlation_id": "$TRACE",
+          "source_record_reference": "$REF_RECORD_slow",
+          "schema_version": "1.0",
+          "minutes_before": 3,
+          "payload": {
+            "service_name": "synthetic-statement-service",
+            "endpoint": "/statements",
+            "status_code": 200,
+            "latency_ms": 31001
+          }
+        }
+      ],
+      "subsequent_sources": []
+    },
+    {
+      "id": "H20-03",
+      "family": "negative-acknowledgement",
+      "split": "held-out",
+      "ground_truth": {
+        "scenario_id": "H20-03",
+        "expected_roles": [
+          "TRANSACTION",
+          "TECHNOLOGY"
+        ],
+        "expected_target_type": "PAYMENT_CONFIRMATION_MISSING",
+        "expected_exception_types": [
+          "PAYMENT_CONFIRMATION_MISSING"
+        ],
+        "expected_categories": [
+          "PAYMENT_CONFIRMATION_MISMATCH"
+        ],
+        "expected_decision": "ESCALATE",
+        "ground_truth_version": "phase20-candidates-1.0",
+        "scoring_version": "phase19-scoring-1.3",
+        "material_missing_evidence": [
+          "Unresolved financial discrepancy or absent authoritative positive receipt"
+        ],
+        "known_unknowns": [
+          "Internal technical cause and broader impact remain unknown"
+        ],
+        "nonblocking_diagnostic_uncertainty": [
+          "Internal diagnosis unless recommendation depends on it"
+        ],
+        "acceptable_advisory_outcomes": [
+          "ESCALATE",
+          "RECOMMENDATION",
+          "REINVESTIGATE"
+        ],
+        "authorization_restrictions": [
+          "No execution or authorization"
+        ],
+        "expert_judgement": {
+          "status": "ENGINEERING AUTHORED; EXTERNAL REVIEW PENDING",
+          "decision": "ESCALATE"
+        },
+        "rubric": {
+          "narrative": "NOT REVIEWED"
+        },
+        "initial_sources": [
+          {
+            "event_id": "$REF_EVENT_payment",
+            "source_system": "payments",
+            "event_type": "synthetic.observed",
+            "entity_reference": "$ENTITY",
+            "correlation_id": "$TRACE",
+            "source_record_reference": "$REF_RECORD_payment",
+            "schema_version": "1.0",
+            "minutes_before": 3,
+            "payload": {
+              "payment_status": "SETTLED",
+              "amount": "65",
+              "currency": "SGD",
+              "idempotency_key": "$KEY"
+            }
+          },
+          {
+            "event_id": "$REF_EVENT_ledger",
+            "source_system": "ledger",
+            "event_type": "synthetic.observed",
+            "entity_reference": "$ENTITY",
+            "correlation_id": "$TRACE",
+            "source_record_reference": "$REF_RECORD_ledger",
+            "schema_version": "1.0",
+            "minutes_before": 3,
+            "payload": {
+              "ledger_status": "POSTED",
+              "entry_type": "DEBIT",
+              "amount": "65",
+              "currency": "SGD",
+              "balance_after": "935",
+              "ledger_transaction_id": "$REF_LEDGER"
+            }
+          },
+          {
+            "event_id": "$REF_EVENT_confirmation",
+            "source_system": "confirmations",
+            "event_type": "synthetic.observed",
+            "entity_reference": "$ENTITY",
+            "correlation_id": "$TRACE",
+            "source_record_reference": "$REF_RECORD_confirmation",
+            "schema_version": "1.0",
+            "minutes_before": 2,
+            "payload": {
+              "confirmation_status": "FAILED",
+              "is_duplicate": false
+            }
+          }
+        ],
+        "planned_subsequent_sources": [],
+        "quality_rubric": {
+          "version": "phase20-quality-1.0",
+          "role_requirements": {
+            "TRANSACTION": [
+              {
+                "id": "payments.amount",
+                "source": "payments",
+                "field": "amount",
+                "required": true,
+                "kind": "OBSERVATION",
+                "owner": "TRANSACTION"
+              },
+              {
+                "id": "payments.payment_status",
+                "source": "payments",
+                "field": "payment_status",
+                "required": true,
+                "kind": "OBSERVATION",
+                "owner": "TRANSACTION"
+              },
+              {
+                "id": "ledger.amount",
+                "source": "ledger",
+                "field": "amount",
+                "required": true,
+                "kind": "OBSERVATION",
+                "owner": "TRANSACTION"
+              },
+              {
+                "id": "ledger.ledger_status",
+                "source": "ledger",
+                "field": "ledger_status",
+                "required": true,
+                "kind": "OBSERVATION",
+                "owner": "TRANSACTION"
+              },
+              {
+                "id": "confirmations.confirmation_status",
+                "source": "confirmations",
+                "field": "confirmation_status",
+                "required": true,
+                "kind": "OBSERVATION",
+                "owner": "TRANSACTION"
+              },
+              {
+                "id": "internal_cause",
+                "source": "internal_diagnostics",
+                "field": null,
+                "required": false,
+                "kind": "DIAGNOSTIC",
+                "owner": "TECHNOLOGY"
+              },
+              {
+                "id": "service_health",
+                "source": "service_health",
+                "field": null,
+                "required": false,
+                "kind": "OBSERVATION",
+                "owner": "TECHNOLOGY"
+              },
+              {
+                "id": "policy_applicability",
+                "source": "policy_applicability",
+                "field": null,
+                "required": false,
+                "kind": "OBSERVATION",
+                "owner": "RISK"
+              },
+              {
+                "id": "authoritative_receipt",
+                "source": "confirmations",
+                "field": "confirmation_status",
+                "value": "CONFIRMED",
+                "required": true,
+                "kind": "OBSERVATION",
+                "owner": "TRANSACTION"
+              }
+            ],
+            "TECHNOLOGY": [
+              {
+                "id": "confirmations.confirmation_status",
+                "source": "confirmations",
+                "field": "confirmation_status",
+                "required": true,
+                "kind": "OBSERVATION",
+                "owner": "TECHNOLOGY"
+              },
+              {
+                "id": "internal_cause",
+                "source": "internal_diagnostics",
+                "field": null,
+                "required": false,
+                "kind": "DIAGNOSTIC",
+                "owner": "TECHNOLOGY"
+              },
+              {
+                "id": "service_health",
+                "source": "service_health",
+                "field": null,
+                "required": false,
+                "kind": "OBSERVATION",
+                "owner": "TECHNOLOGY"
+              },
+              {
+                "id": "policy_applicability",
+                "source": "policy_applicability",
+                "field": null,
+                "required": false,
+                "kind": "OBSERVATION",
+                "owner": "RISK"
+              },
+              {
+                "id": "authoritative_receipt",
+                "source": "confirmations",
+                "field": "confirmation_status",
+                "value": "CONFIRMED",
+                "required": false,
+                "kind": "OBSERVATION",
+                "owner": "TRANSACTION"
+              }
+            ]
+          },
+          "materiality_policy": "Nonblocking diagnosis can become material for a cause-dependent recommendation; expert binding required.",
+          "expert_expected_decision": "ESCALATE",
+          "narrative_review_required": true
+        }
+      },
+      "initial_sources": [
+        {
+          "event_id": "$REF_EVENT_payment",
+          "source_system": "payments",
+          "event_type": "synthetic.observed",
+          "entity_reference": "$ENTITY",
+          "correlation_id": "$TRACE",
+          "source_record_reference": "$REF_RECORD_payment",
+          "schema_version": "1.0",
+          "minutes_before": 3,
+          "payload": {
+            "payment_status": "SETTLED",
+            "amount": "65",
+            "currency": "SGD",
+            "idempotency_key": "$KEY"
+          }
+        },
+        {
+          "event_id": "$REF_EVENT_ledger",
+          "source_system": "ledger",
+          "event_type": "synthetic.observed",
+          "entity_reference": "$ENTITY",
+          "correlation_id": "$TRACE",
+          "source_record_reference": "$REF_RECORD_ledger",
+          "schema_version": "1.0",
+          "minutes_before": 3,
+          "payload": {
+            "ledger_status": "POSTED",
+            "entry_type": "DEBIT",
+            "amount": "65",
+            "currency": "SGD",
+            "balance_after": "935",
+            "ledger_transaction_id": "$REF_LEDGER"
+          }
+        },
+        {
+          "event_id": "$REF_EVENT_confirmation",
+          "source_system": "confirmations",
+          "event_type": "synthetic.observed",
+          "entity_reference": "$ENTITY",
+          "correlation_id": "$TRACE",
+          "source_record_reference": "$REF_RECORD_confirmation",
+          "schema_version": "1.0",
+          "minutes_before": 2,
+          "payload": {
+            "confirmation_status": "FAILED",
+            "is_duplicate": false
+          }
+        }
+      ],
+      "subsequent_sources": []
+    }
+  ]
+}

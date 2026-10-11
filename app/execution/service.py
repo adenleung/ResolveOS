@@ -248,7 +248,8 @@ class ExecutionEngine:
         discrepancies, ledger, confirmations = [], [], []
         if payment:
             ledger = [dict(row) for row in self.session.execute(select(SyntheticLedgerEntry.ledger_transaction_id,
-                SyntheticLedgerEntry.entry_type, SyntheticLedgerEntry.status, SyntheticLedgerEntry.amount, SyntheticLedgerEntry.currency)
+                SyntheticLedgerEntry.entry_type, SyntheticLedgerEntry.status, SyntheticLedgerEntry.amount, SyntheticLedgerEntry.currency,
+                SyntheticLedgerEntry.balance_after)
                 .where(SyntheticLedgerEntry.payment_id == payment["id"]).order_by(SyntheticLedgerEntry.id).limit(1001).with_for_update()).mappings()]
             confirmations = [dict(row) for row in self.session.execute(select(SyntheticConfirmationEvent.event_id,
                 SyntheticConfirmationEvent.status).where(SyntheticConfirmationEvent.payment_id == payment["id"])

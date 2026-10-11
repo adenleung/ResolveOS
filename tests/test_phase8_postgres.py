@@ -99,6 +99,19 @@ def test_supervisor_fabricated_reference_rejected(session, settings):
     session.refresh(task)
     assert task.status == "DEAD_LETTER"
 
+
+def test_supervisor_rejects_foreign_specialist_hypothesis_reference(session, settings):
+    class NeverCalled(FakeSupervisor):
+        def turn(self, *args):
+            pytest.fail("Foreign uncertainty context must fail before provider execution")
+    case, task, runner, claim, work = claimed_review(session, settings, NeverCalled())
+    work[0].result = {**work[0].result, "hypotheses":[dict(possible_cause="Unverified cause",
+        supporting_evidence_ids=["foreign-event"], contradicting_evidence_ids=[], unresolved_questions=["Unknown cause"])]}
+    session.commit()
+    result = runner.run(task.id, "supervisor", claim["lease_token"])
+    assert result["outcome"]=="FAILED" and result["error_code"]=="specialist_hypothesis_reference_invalid"
+    assert session.scalar(select(func.count()).select_from(ActionRecord))==0
+
 def test_supervisor_targeted_reinvestigation_preserves_other_work(session, settings):
     case, task, runner, claim, work = claimed_review(session, settings, FakeSupervisor("REINVESTIGATE"))
     result = runner.run(task.id, "supervisor", claim["lease_token"])

@@ -1,5 +1,6 @@
 """Replaceable provider protocol; no implicit live calls or provider retries."""
 import json
+from copy import deepcopy
 from typing import Protocol
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
@@ -27,6 +28,24 @@ def strict_schema(schema):
         return [strict_schema(item) for item in schema]
     return schema
 
+
+def output_schema(output_model):
+    """Field-discriminated status predicate in the supported nested anyOf subset.
+
+    Generic generated fields are limited to the existing observation whitelist;
+    they cannot provide an alternate string-valued status_code branch.
+    """
+    from app.investigation.tools import PAYLOAD_FIELDS
+    schema = output_model.model_json_schema()
+    finding = schema.get("$defs", {}).get("Finding")
+    if finding:
+        status, generic = deepcopy(finding), deepcopy(finding)
+        status["properties"]["field"] = {"type":"string", "enum":["status_code"]}
+        status["properties"]["expected_value"] = {"type":"integer", "minimum":100, "maximum":599}
+        generic["properties"]["field"] = {"anyOf":[{"type":"string", "enum":sorted(PAYLOAD_FIELDS-{"status_code"})}, {"type":"null"}]}
+        schema["$defs"]["Finding"] = {"anyOf":[status, generic]}
+    return strict_schema(schema)
+
 class OpenAIProvider:
     def __init__(self, settings, output_model=Output):
         if not (settings.investigator_live_enabled and settings.openai_api_key and
@@ -46,7 +65,7 @@ class OpenAIProvider:
                 "input": messages, "tools": [{**tool, "parameters": strict_schema(tool["parameters"]), "strict": True} for tool in tools], "store": False,
                 "max_output_tokens": max_tokens,
                 "text": {"format": {"type": "json_schema", "name": "investigation",
-                    "strict": True, "schema": strict_schema(self.output_model.model_json_schema())}}}
+                    "strict": True, "schema": output_schema(self.output_model)}}}
         request = Request("https://api.openai.com/v1/responses", data=json.dumps(body).encode(),
             headers={"Content-Type": "application/json",
                 "Authorization": "Bearer " + self.settings.openai_api_key.get_secret_value()})

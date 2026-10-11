@@ -1,0 +1,1122 @@
+{
+  "version": "operational-1.0",
+  "seed": 20261010,
+  "cases": [
+    {
+      "id": "development-000",
+      "split": "development",
+      "family": "eligible_missing",
+      "amount": 100,
+      "latency_ms": 15,
+      "seed": 20261010,
+      "currency": "SGD"
+    },
+    {
+      "id": "development-001",
+      "split": "development",
+      "family": "duplicate_delivery",
+      "amount": 125,
+      "latency_ms": 15,
+      "seed": 20261011,
+      "currency": "SGD"
+    },
+    {
+      "id": "development-002",
+      "split": "development",
+      "family": "human_amount",
+      "amount": 600,
+      "latency_ms": 60,
+      "seed": 20261012,
+      "currency": "SGD"
+    },
+    {
+      "id": "development-003",
+      "split": "development",
+      "family": "inactive_policy",
+      "amount": 100,
+      "latency_ms": 30,
+      "seed": 20261013,
+      "currency": "SGD"
+    },
+    {
+      "id": "development-004",
+      "split": "development",
+      "family": "missing_ledger",
+      "amount": 100,
+      "latency_ms": 30,
+      "seed": 20261014,
+      "currency": "SGD"
+    },
+    {
+      "id": "development-005",
+      "split": "development",
+      "family": "duplicate_debit",
+      "amount": 100,
+      "latency_ms": 30,
+      "seed": 20261015,
+      "currency": "SGD"
+    },
+    {
+      "id": "development-006",
+      "split": "development",
+      "family": "unsettled_payment",
+      "amount": 125,
+      "latency_ms": 15,
+      "seed": 20261016,
+      "currency": "SGD"
+    },
+    {
+      "id": "development-007",
+      "split": "development",
+      "family": "source_contradiction",
+      "amount": 75,
+      "latency_ms": 30,
+      "seed": 20261017,
+      "currency": "SGD"
+    },
+    {
+      "id": "development-008",
+      "split": "development",
+      "family": "verification_failure",
+      "amount": 100,
+      "latency_ms": 15,
+      "seed": 20261018,
+      "currency": "SGD"
+    },
+    {
+      "id": "development-009",
+      "split": "development",
+      "family": "worker_restart",
+      "amount": 125,
+      "latency_ms": 60,
+      "seed": 20261019,
+      "currency": "SGD"
+    },
+    {
+      "id": "development-010",
+      "split": "development",
+      "family": "technology_timeout",
+      "amount": 100,
+      "latency_ms": 30,
+      "seed": 20261020,
+      "currency": "SGD"
+    },
+    {
+      "id": "development-011",
+      "split": "development",
+      "family": "missing_handler",
+      "amount": 100,
+      "latency_ms": 60,
+      "seed": 20261021,
+      "currency": "SGD"
+    },
+    {
+      "id": "development-012",
+      "split": "development",
+      "family": "eligible_missing",
+      "amount": 75,
+      "latency_ms": 15,
+      "seed": 20261022,
+      "currency": "SGD"
+    },
+    {
+      "id": "development-013",
+      "split": "development",
+      "family": "duplicate_delivery",
+      "amount": 100,
+      "latency_ms": 30,
+      "seed": 20261023,
+      "currency": "SGD"
+    },
+    {
+      "id": "development-014",
+      "split": "development",
+      "family": "human_amount",
+      "amount": 600,
+      "latency_ms": 30,
+      "seed": 20261024,
+      "currency": "SGD"
+    },
+    {
+      "id": "development-015",
+      "split": "development",
+      "family": "inactive_policy",
+      "amount": 75,
+      "latency_ms": 15,
+      "seed": 20261025,
+      "currency": "SGD"
+    },
+    {
+      "id": "development-016",
+      "split": "development",
+      "family": "missing_ledger",
+      "amount": 125,
+      "latency_ms": 15,
+      "seed": 20261026,
+      "currency": "SGD"
+    },
+    {
+      "id": "development-017",
+      "split": "development",
+      "family": "duplicate_debit",
+      "amount": 75,
+      "latency_ms": 30,
+      "seed": 20261027,
+      "currency": "SGD"
+    },
+    {
+      "id": "development-018",
+      "split": "development",
+      "family": "unsettled_payment",
+      "amount": 100,
+      "latency_ms": 30,
+      "seed": 20261028,
+      "currency": "SGD"
+    },
+    {
+      "id": "development-019",
+      "split": "development",
+      "family": "source_contradiction",
+      "amount": 100,
+      "latency_ms": 60,
+      "seed": 20261029,
+      "currency": "SGD"
+    },
+    {
+      "id": "development-020",
+      "split": "development",
+      "family": "verification_failure",
+      "amount": 75,
+      "latency_ms": 30,
+      "seed": 20261030,
+      "currency": "SGD"
+    },
+    {
+      "id": "development-021",
+      "split": "development",
+      "family": "worker_restart",
+      "amount": 100,
+      "latency_ms": 15,
+      "seed": 20261031,
+      "currency": "SGD"
+    },
+    {
+      "id": "development-022",
+      "split": "development",
+      "family": "technology_timeout",
+      "amount": 125,
+      "latency_ms": 30,
+      "seed": 20261032,
+      "currency": "SGD"
+    },
+    {
+      "id": "development-023",
+      "split": "development",
+      "family": "missing_handler",
+      "amount": 125,
+      "latency_ms": 60,
+      "seed": 20261033,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-000",
+      "split": "held_out",
+      "family": "eligible_missing",
+      "amount": 75,
+      "latency_ms": 60,
+      "seed": 20261010,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-001",
+      "split": "held_out",
+      "family": "duplicate_delivery",
+      "amount": 100,
+      "latency_ms": 15,
+      "seed": 20261011,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-002",
+      "split": "held_out",
+      "family": "human_amount",
+      "amount": 600,
+      "latency_ms": 60,
+      "seed": 20261012,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-003",
+      "split": "held_out",
+      "family": "inactive_policy",
+      "amount": 75,
+      "latency_ms": 15,
+      "seed": 20261013,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-004",
+      "split": "held_out",
+      "family": "missing_ledger",
+      "amount": 125,
+      "latency_ms": 30,
+      "seed": 20261014,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-005",
+      "split": "held_out",
+      "family": "duplicate_debit",
+      "amount": 100,
+      "latency_ms": 60,
+      "seed": 20261015,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-006",
+      "split": "held_out",
+      "family": "unsettled_payment",
+      "amount": 125,
+      "latency_ms": 60,
+      "seed": 20261016,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-007",
+      "split": "held_out",
+      "family": "source_contradiction",
+      "amount": 125,
+      "latency_ms": 30,
+      "seed": 20261017,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-008",
+      "split": "held_out",
+      "family": "verification_failure",
+      "amount": 125,
+      "latency_ms": 15,
+      "seed": 20261018,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-009",
+      "split": "held_out",
+      "family": "worker_restart",
+      "amount": 125,
+      "latency_ms": 60,
+      "seed": 20261019,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-010",
+      "split": "held_out",
+      "family": "technology_timeout",
+      "amount": 100,
+      "latency_ms": 30,
+      "seed": 20261020,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-011",
+      "split": "held_out",
+      "family": "missing_handler",
+      "amount": 75,
+      "latency_ms": 30,
+      "seed": 20261021,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-012",
+      "split": "held_out",
+      "family": "eligible_missing",
+      "amount": 75,
+      "latency_ms": 30,
+      "seed": 20261022,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-013",
+      "split": "held_out",
+      "family": "duplicate_delivery",
+      "amount": 100,
+      "latency_ms": 60,
+      "seed": 20261023,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-014",
+      "split": "held_out",
+      "family": "human_amount",
+      "amount": 600,
+      "latency_ms": 60,
+      "seed": 20261024,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-015",
+      "split": "held_out",
+      "family": "inactive_policy",
+      "amount": 100,
+      "latency_ms": 15,
+      "seed": 20261025,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-016",
+      "split": "held_out",
+      "family": "missing_ledger",
+      "amount": 75,
+      "latency_ms": 60,
+      "seed": 20261026,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-017",
+      "split": "held_out",
+      "family": "duplicate_debit",
+      "amount": 125,
+      "latency_ms": 60,
+      "seed": 20261027,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-018",
+      "split": "held_out",
+      "family": "unsettled_payment",
+      "amount": 75,
+      "latency_ms": 30,
+      "seed": 20261028,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-019",
+      "split": "held_out",
+      "family": "source_contradiction",
+      "amount": 75,
+      "latency_ms": 60,
+      "seed": 20261029,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-020",
+      "split": "held_out",
+      "family": "verification_failure",
+      "amount": 100,
+      "latency_ms": 60,
+      "seed": 20261030,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-021",
+      "split": "held_out",
+      "family": "worker_restart",
+      "amount": 100,
+      "latency_ms": 60,
+      "seed": 20261031,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-022",
+      "split": "held_out",
+      "family": "technology_timeout",
+      "amount": 100,
+      "latency_ms": 60,
+      "seed": 20261032,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-023",
+      "split": "held_out",
+      "family": "missing_handler",
+      "amount": 75,
+      "latency_ms": 60,
+      "seed": 20261033,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-024",
+      "split": "held_out",
+      "family": "eligible_missing",
+      "amount": 75,
+      "latency_ms": 30,
+      "seed": 20261034,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-025",
+      "split": "held_out",
+      "family": "duplicate_delivery",
+      "amount": 125,
+      "latency_ms": 30,
+      "seed": 20261035,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-026",
+      "split": "held_out",
+      "family": "human_amount",
+      "amount": 600,
+      "latency_ms": 30,
+      "seed": 20261036,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-027",
+      "split": "held_out",
+      "family": "inactive_policy",
+      "amount": 75,
+      "latency_ms": 15,
+      "seed": 20261037,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-028",
+      "split": "held_out",
+      "family": "missing_ledger",
+      "amount": 100,
+      "latency_ms": 30,
+      "seed": 20261038,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-029",
+      "split": "held_out",
+      "family": "duplicate_debit",
+      "amount": 125,
+      "latency_ms": 30,
+      "seed": 20261039,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-030",
+      "split": "held_out",
+      "family": "unsettled_payment",
+      "amount": 75,
+      "latency_ms": 15,
+      "seed": 20261040,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-031",
+      "split": "held_out",
+      "family": "source_contradiction",
+      "amount": 125,
+      "latency_ms": 60,
+      "seed": 20261041,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-032",
+      "split": "held_out",
+      "family": "verification_failure",
+      "amount": 75,
+      "latency_ms": 15,
+      "seed": 20261042,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-033",
+      "split": "held_out",
+      "family": "worker_restart",
+      "amount": 125,
+      "latency_ms": 30,
+      "seed": 20261043,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-034",
+      "split": "held_out",
+      "family": "technology_timeout",
+      "amount": 125,
+      "latency_ms": 15,
+      "seed": 20261044,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-035",
+      "split": "held_out",
+      "family": "missing_handler",
+      "amount": 75,
+      "latency_ms": 15,
+      "seed": 20261045,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-036",
+      "split": "held_out",
+      "family": "eligible_missing",
+      "amount": 75,
+      "latency_ms": 60,
+      "seed": 20261046,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-037",
+      "split": "held_out",
+      "family": "duplicate_delivery",
+      "amount": 125,
+      "latency_ms": 60,
+      "seed": 20261047,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-038",
+      "split": "held_out",
+      "family": "human_amount",
+      "amount": 600,
+      "latency_ms": 60,
+      "seed": 20261048,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-039",
+      "split": "held_out",
+      "family": "inactive_policy",
+      "amount": 125,
+      "latency_ms": 15,
+      "seed": 20261049,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-040",
+      "split": "held_out",
+      "family": "missing_ledger",
+      "amount": 125,
+      "latency_ms": 60,
+      "seed": 20261050,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-041",
+      "split": "held_out",
+      "family": "duplicate_debit",
+      "amount": 75,
+      "latency_ms": 60,
+      "seed": 20261051,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-042",
+      "split": "held_out",
+      "family": "unsettled_payment",
+      "amount": 75,
+      "latency_ms": 15,
+      "seed": 20261052,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-043",
+      "split": "held_out",
+      "family": "source_contradiction",
+      "amount": 100,
+      "latency_ms": 15,
+      "seed": 20261053,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-044",
+      "split": "held_out",
+      "family": "verification_failure",
+      "amount": 125,
+      "latency_ms": 60,
+      "seed": 20261054,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-045",
+      "split": "held_out",
+      "family": "worker_restart",
+      "amount": 75,
+      "latency_ms": 60,
+      "seed": 20261055,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-046",
+      "split": "held_out",
+      "family": "technology_timeout",
+      "amount": 125,
+      "latency_ms": 15,
+      "seed": 20261056,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-047",
+      "split": "held_out",
+      "family": "missing_handler",
+      "amount": 75,
+      "latency_ms": 15,
+      "seed": 20261057,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-048",
+      "split": "held_out",
+      "family": "eligible_missing",
+      "amount": 75,
+      "latency_ms": 30,
+      "seed": 20261058,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-049",
+      "split": "held_out",
+      "family": "duplicate_delivery",
+      "amount": 125,
+      "latency_ms": 30,
+      "seed": 20261059,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-050",
+      "split": "held_out",
+      "family": "human_amount",
+      "amount": 600,
+      "latency_ms": 60,
+      "seed": 20261060,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-051",
+      "split": "held_out",
+      "family": "inactive_policy",
+      "amount": 75,
+      "latency_ms": 15,
+      "seed": 20261061,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-052",
+      "split": "held_out",
+      "family": "missing_ledger",
+      "amount": 75,
+      "latency_ms": 15,
+      "seed": 20261062,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-053",
+      "split": "held_out",
+      "family": "duplicate_debit",
+      "amount": 100,
+      "latency_ms": 15,
+      "seed": 20261063,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-054",
+      "split": "held_out",
+      "family": "unsettled_payment",
+      "amount": 75,
+      "latency_ms": 60,
+      "seed": 20261064,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-055",
+      "split": "held_out",
+      "family": "source_contradiction",
+      "amount": 125,
+      "latency_ms": 60,
+      "seed": 20261065,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-056",
+      "split": "held_out",
+      "family": "verification_failure",
+      "amount": 100,
+      "latency_ms": 60,
+      "seed": 20261066,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-057",
+      "split": "held_out",
+      "family": "worker_restart",
+      "amount": 75,
+      "latency_ms": 60,
+      "seed": 20261067,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-058",
+      "split": "held_out",
+      "family": "technology_timeout",
+      "amount": 125,
+      "latency_ms": 60,
+      "seed": 20261068,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-059",
+      "split": "held_out",
+      "family": "missing_handler",
+      "amount": 100,
+      "latency_ms": 60,
+      "seed": 20261069,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-060",
+      "split": "held_out",
+      "family": "eligible_missing",
+      "amount": 75,
+      "latency_ms": 30,
+      "seed": 20261070,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-061",
+      "split": "held_out",
+      "family": "duplicate_delivery",
+      "amount": 100,
+      "latency_ms": 30,
+      "seed": 20261071,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-062",
+      "split": "held_out",
+      "family": "human_amount",
+      "amount": 600,
+      "latency_ms": 60,
+      "seed": 20261072,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-063",
+      "split": "held_out",
+      "family": "inactive_policy",
+      "amount": 100,
+      "latency_ms": 15,
+      "seed": 20261073,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-064",
+      "split": "held_out",
+      "family": "missing_ledger",
+      "amount": 125,
+      "latency_ms": 15,
+      "seed": 20261074,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-065",
+      "split": "held_out",
+      "family": "duplicate_debit",
+      "amount": 125,
+      "latency_ms": 60,
+      "seed": 20261075,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-066",
+      "split": "held_out",
+      "family": "unsettled_payment",
+      "amount": 75,
+      "latency_ms": 60,
+      "seed": 20261076,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-067",
+      "split": "held_out",
+      "family": "source_contradiction",
+      "amount": 125,
+      "latency_ms": 30,
+      "seed": 20261077,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-068",
+      "split": "held_out",
+      "family": "verification_failure",
+      "amount": 125,
+      "latency_ms": 60,
+      "seed": 20261078,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-069",
+      "split": "held_out",
+      "family": "worker_restart",
+      "amount": 125,
+      "latency_ms": 30,
+      "seed": 20261079,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-070",
+      "split": "held_out",
+      "family": "technology_timeout",
+      "amount": 125,
+      "latency_ms": 15,
+      "seed": 20261080,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-071",
+      "split": "held_out",
+      "family": "missing_handler",
+      "amount": 125,
+      "latency_ms": 60,
+      "seed": 20261081,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-072",
+      "split": "held_out",
+      "family": "eligible_missing",
+      "amount": 75,
+      "latency_ms": 30,
+      "seed": 20261082,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-073",
+      "split": "held_out",
+      "family": "duplicate_delivery",
+      "amount": 100,
+      "latency_ms": 30,
+      "seed": 20261083,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-074",
+      "split": "held_out",
+      "family": "human_amount",
+      "amount": 600,
+      "latency_ms": 30,
+      "seed": 20261084,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-075",
+      "split": "held_out",
+      "family": "inactive_policy",
+      "amount": 75,
+      "latency_ms": 15,
+      "seed": 20261085,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-076",
+      "split": "held_out",
+      "family": "missing_ledger",
+      "amount": 125,
+      "latency_ms": 60,
+      "seed": 20261086,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-077",
+      "split": "held_out",
+      "family": "duplicate_debit",
+      "amount": 75,
+      "latency_ms": 30,
+      "seed": 20261087,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-078",
+      "split": "held_out",
+      "family": "unsettled_payment",
+      "amount": 125,
+      "latency_ms": 60,
+      "seed": 20261088,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-079",
+      "split": "held_out",
+      "family": "source_contradiction",
+      "amount": 125,
+      "latency_ms": 60,
+      "seed": 20261089,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-080",
+      "split": "held_out",
+      "family": "verification_failure",
+      "amount": 100,
+      "latency_ms": 30,
+      "seed": 20261090,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-081",
+      "split": "held_out",
+      "family": "worker_restart",
+      "amount": 100,
+      "latency_ms": 15,
+      "seed": 20261091,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-082",
+      "split": "held_out",
+      "family": "technology_timeout",
+      "amount": 75,
+      "latency_ms": 30,
+      "seed": 20261092,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-083",
+      "split": "held_out",
+      "family": "missing_handler",
+      "amount": 100,
+      "latency_ms": 15,
+      "seed": 20261093,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-084",
+      "split": "held_out",
+      "family": "eligible_missing",
+      "amount": 125,
+      "latency_ms": 15,
+      "seed": 20261094,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-085",
+      "split": "held_out",
+      "family": "duplicate_delivery",
+      "amount": 125,
+      "latency_ms": 60,
+      "seed": 20261095,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-086",
+      "split": "held_out",
+      "family": "human_amount",
+      "amount": 600,
+      "latency_ms": 30,
+      "seed": 20261096,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-087",
+      "split": "held_out",
+      "family": "inactive_policy",
+      "amount": 125,
+      "latency_ms": 15,
+      "seed": 20261097,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-088",
+      "split": "held_out",
+      "family": "missing_ledger",
+      "amount": 75,
+      "latency_ms": 15,
+      "seed": 20261098,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-089",
+      "split": "held_out",
+      "family": "duplicate_debit",
+      "amount": 100,
+      "latency_ms": 60,
+      "seed": 20261099,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-090",
+      "split": "held_out",
+      "family": "unsettled_payment",
+      "amount": 125,
+      "latency_ms": 15,
+      "seed": 20261100,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-091",
+      "split": "held_out",
+      "family": "source_contradiction",
+      "amount": 100,
+      "latency_ms": 30,
+      "seed": 20261101,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-092",
+      "split": "held_out",
+      "family": "verification_failure",
+      "amount": 100,
+      "latency_ms": 60,
+      "seed": 20261102,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-093",
+      "split": "held_out",
+      "family": "worker_restart",
+      "amount": 75,
+      "latency_ms": 30,
+      "seed": 20261103,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-094",
+      "split": "held_out",
+      "family": "technology_timeout",
+      "amount": 75,
+      "latency_ms": 30,
+      "seed": 20261104,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-095",
+      "split": "held_out",
+      "family": "missing_handler",
+      "amount": 125,
+      "latency_ms": 15,
+      "seed": 20261105,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-096",
+      "split": "held_out",
+      "family": "eligible_missing",
+      "amount": 100,
+      "latency_ms": 15,
+      "seed": 20261106,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-097",
+      "split": "held_out",
+      "family": "duplicate_delivery",
+      "amount": 125,
+      "latency_ms": 30,
+      "seed": 20261107,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-098",
+      "split": "held_out",
+      "family": "human_amount",
+      "amount": 600,
+      "latency_ms": 60,
+      "seed": 20261108,
+      "currency": "SGD"
+    },
+    {
+      "id": "held_out-099",
+      "split": "held_out",
+      "family": "inactive_policy",
+      "amount": 75,
+      "latency_ms": 30,
+      "seed": 20261109,
+      "currency": "SGD"
+    }
+  ]
+}
