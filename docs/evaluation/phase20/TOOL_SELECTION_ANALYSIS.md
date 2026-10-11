@@ -1,0 +1,8 @@
+# Tool-selection analysis
+Current deterministic offline: 10 cases; detection 10/10, classification and routing 10/10. Accepted predicates 158/158; required facts 56/56. Four native Supervisor reviews, five human escalations, one no-exception control. These are fixture mechanics, not GPT quality. All ten external reasoning verdicts remain INCONCLUSIVE / NOT REVIEWED. No completion or escalation is certified by a predicate count.
+
+Each quality-evaluation.json exports role tools, called names/statuses/IDs, actual read-only availability probes, retrieved source types, current role-relevant available/retrieved/omitted event IDs and exact coverage numerator/denominator. Failed/denied calls and explicit UNAVAILABLE responses remain separate. Duplicate names are candidates only: native telemetry lacks arguments, so repeated names may have different filters. No penalty applies for avoiding an irrelevant tool.
+
+Historical saved GPT: 20261010T235050-live-f655d5 Technology used get_service_logs, get_api_request and unavailable get_service_health, without get_event_timeline. Authorized replay exposes confirmation/payment/ledger/workflow observations it did not retrieve. 20261011T000752-live-454cab again omits the timeline despite prompt 1.5. This is observed tool-selection weakness, not proof that every claimed missing diagnostic is nonmaterial. Actual missed IDs and source identities are in [historical replay](artifacts/historical-replay-v3/historical-results.json).
+
+Scope exclusions and relevance are explicit. Source-only deterministic providers already know how to query broad timelines; their retrieval coverage is not evidence of GPT tool-selection reliability.

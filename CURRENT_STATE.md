@@ -1,5 +1,16 @@
 # Current State
 
+## Phase 16 first playable frontend — dedicated branch
+
+Seven-character pixel office, physical document handoff, protected record
+projection, progress/inspection and animation replay are implemented. TypeScript,
+lint, 23 frontend tests, production build and four browser checks pass. Backend
+regression here: 71 passed, 283 skipped without PostgreSQL. Real Phase 16 database
+journeys remain unverified. GitHub write access was denied; local commits and
+downloadable backup exist, but no remote Phase 16 checkpoint is claimed. Human
+decisions continue through the existing protected workbench.
+See PHASE16_ACCEPTANCE.md for scope, notices, screenshots, commands and limits.
+
 ## Accepted Phase 15 recovery build
 
 Phases 13–15 are implemented and separately validated. Phase 14 was remotely

@@ -1,0 +1,3 @@
+import type {Snapshot} from './adapter';
+import type {Json} from '@/lib/types';
+export function fixture(timeline:Json[]=[]):Snapshot{return {receivedAt:'2026-10-04T00:00:00Z',detail:{case:{id:'case-a',case_number:'CASE-A',status:'INVESTIGATING',summary:'Synthetic test',priority:'HIGH',created_at:'2026-10-04T00:00:00Z',updated_at:'2026-10-04T00:00:00Z',sla_deadline:null,categories:[],incident_ids:[]},exceptions:[],assessments:[],evidence:[],investigations:[],supervisor_reviews:[],authorizations:[],simulations:[],tasks:{tasks:[],events:[]},policies:[],truncated:false},replay:{case_id:'case-a',as_of:'2026-10-04T00:00:00Z',evidence_known_at_time:[],evidence_observed_later:[],timeline,truncated:false,reconstruction_limitations:[]}};}

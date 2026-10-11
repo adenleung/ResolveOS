@@ -1,0 +1,6 @@
+# Matched baseline comparison
+[Native offline results](artifacts/20261011T044418-offline-d5f38f/results.json) and [rules results](artifacts/20261011T044418-rules-f894fa/results.json).
+
+Both tracks detected, classified and routed 10/10 preregistered cases correctly (including the no-exception control). The rules track stops at its actual capabilities: it detects/routs exceptions, creates native human triage where appropriate and creates no advisory synthesis. It invokes no specialists or Supervisor. Each native offline case also captures rules-baseline.json before providers on the same initial source identities. Additional offline evidence synthesis and four legitimate Supervisor reviews demonstrate mechanics only.
+
+No reasoning accuracy or labour savings advantage is inferred from fixture providers. Detection/classification/routing are shared native code, so matching scores are expected. Rules-only advisory metrics have zero denominators/NOT APPLICABLE, not zero accuracy. Whole-suite timing includes fresh database migration/drop; it is not employee handling time or comparative model latency. Offline suite seconds: 45.067; rules suite seconds: 38.634. Concurrent execution and setup overhead prevent a performance claim.

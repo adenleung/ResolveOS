@@ -276,7 +276,10 @@ def test_real_adapter_strict_schema_and_transport_without_live_calls(settings, m
     def fake_urlopen(request, timeout):
         body = json.loads(request.data)
         finding_schema = body["text"]["format"]["schema"]["$defs"]["Finding"]
-        assert set(finding_schema["required"]) == set(finding_schema["properties"])
+        for variant in finding_schema["anyOf"]:
+            assert set(variant["required"]) == set(variant["properties"])
+            assert variant["additionalProperties"] is False
+        assert finding_schema["anyOf"][0]["properties"]["expected_value"]["type"] == "integer"
         assert body["store"] is False and timeout == 20
         class Response:
             def __enter__(self): return self

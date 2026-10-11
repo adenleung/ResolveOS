@@ -1,0 +1,3 @@
+import {defineConfig} from '@playwright/test';
+const executable=process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE;
+export default defineConfig({testDir:'./e2e',testMatch:'pixel-room.spec.ts',timeout:45000,workers:1,reporter:[['list'],['junit',{outputFile:'../phase16-browser-results.xml'}]],use:{baseURL:'http://127.0.0.1:3030',headless:true,viewport:{width:1600,height:1100},launchOptions:executable?{executablePath:executable,args:['--no-sandbox','--disable-dev-shm-usage','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']}:undefined},webServer:{command:'node node_modules/next/dist/bin/next start --hostname 127.0.0.1 --port 3030',url:'http://127.0.0.1:3030/pixel-room-preview',reuseExistingServer:false,timeout:60000}});

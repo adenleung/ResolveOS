@@ -1,0 +1,57 @@
+# Core reliability
+
+Fresh baseline: 354 passed. Targeted safety: 69 passed. Final: 377 passed, zero failures/skips. Evidence: artifacts/baseline-postgres.xml, critical-safety.xml, final-postgres.xml.
+
+Fixed four demonstrated problems: identity-equivalent replays with changed content now persist an ingestion conflict without replacing the original observation; exact retries increment receipts atomically across connections; partial predicate citations become insufficient rather than supported; memory cannot include a publication later than its investigation snapshot. The smoke experiment additionally discovered and fixed the critical omission of ledger balance from current authorization and independent verification snapshots. Balance change after execution now produces FAILED_VERIFICATION and ESCALATED, not RESOLVED.
+
+No queue, lifecycle, database or approval architecture was replaced. Existing tests exercise independent PostgreSQL claims, SKIP LOCKED, separate worker processes, lease expiry/recovery, stale fencing, retry exhaustion, ambiguous retries, precommit rollback and concurrent single effects. Dedicated hardening regression uses six independent receipt connections. New balance, source-type and temporal regressions are in tests/test_hardening_postgres.py.
+
+Intentional compatibility effect: authorizations with the old incomplete ledger snapshot are stale when rechecked and must be reevaluated. Historic authorizations, verified outcomes and audit rows are not rewritten. This is an additive backend source observation, with unchanged API fields and action allowlist.
+
+## Invariants
+
+Stable event/case identity: unique source/event and detector keys. Evidence authority: scoped immutable observations with provenance, source recheck and typed field equality. Lifecycle: explicit transition service below. AI separation: advisory schemas and read-only tools. Fresh authorization: source/policy/action fingerprint and expiry. Idempotency: unique logical confirmation operation/event. Ownership: PostgreSQL clock, token and post-effect fence. Verification: source reread and unchanged monetary fields including balance. Audit: caller-owned protected transactions and attributed transitions. Historical integrity: snapshot cutoff and retained versioned records. Evidence spans lifecycle, Phase 6–11 tests and new hardening tests; this is finite prototype validation, not a universal failure-probability guarantee.
+
+## Implemented transition matrix
+
+| From | To | Authority | Required condition | Audit / retry |
+|---|---|---|---|---|
+| DETECTED | BLOCKED | OrchestrationService / specialist / Supervisor / reviewer service | Current case/task/evidence context, legal transition, role and lease where required | Attributed case transition audit; retry retains identity |
+| DETECTED | ESCALATED | OrchestrationService / specialist / Supervisor / reviewer service | Current case/task/evidence context, legal transition, role and lease where required | Attributed case transition audit; retry retains identity |
+| DETECTED | TRIAGED | OrchestrationService / specialist / Supervisor / reviewer service | Current case/task/evidence context, legal transition, role and lease where required | Attributed case transition audit; retry retains identity |
+| TRIAGED | AWAITING_HUMAN | OrchestrationService / specialist / Supervisor / reviewer service | Current case/task/evidence context, legal transition, role and lease where required | Attributed case transition audit; retry retains identity |
+| TRIAGED | BLOCKED | OrchestrationService / specialist / Supervisor / reviewer service | Current case/task/evidence context, legal transition, role and lease where required | Attributed case transition audit; retry retains identity |
+| TRIAGED | ESCALATED | OrchestrationService / specialist / Supervisor / reviewer service | Current case/task/evidence context, legal transition, role and lease where required | Attributed case transition audit; retry retains identity |
+| TRIAGED | INVESTIGATING | OrchestrationService / specialist / Supervisor / reviewer service | Current case/task/evidence context, legal transition, role and lease where required | Attributed case transition audit; retry retains identity |
+| TRIAGED | INVESTIGATION_QUEUED | OrchestrationService / specialist / Supervisor / reviewer service | Current case/task/evidence context, legal transition, role and lease where required | Attributed case transition audit; retry retains identity |
+| INVESTIGATION_QUEUED | AWAITING_HUMAN | OrchestrationService / specialist / Supervisor / reviewer service | Current case/task/evidence context, legal transition, role and lease where required | Attributed case transition audit; retry retains identity |
+| INVESTIGATION_QUEUED | BLOCKED | OrchestrationService / specialist / Supervisor / reviewer service | Current case/task/evidence context, legal transition, role and lease where required | Attributed case transition audit; retry retains identity |
+| INVESTIGATION_QUEUED | ESCALATED | OrchestrationService / specialist / Supervisor / reviewer service | Current case/task/evidence context, legal transition, role and lease where required | Attributed case transition audit; retry retains identity |
+| INVESTIGATION_QUEUED | INVESTIGATING | OrchestrationService / specialist / Supervisor / reviewer service | Current case/task/evidence context, legal transition, role and lease where required | Attributed case transition audit; retry retains identity |
+| INVESTIGATING | AWAITING_DECISION | OrchestrationService / specialist / Supervisor / reviewer service | Current case/task/evidence context, legal transition, role and lease where required | Attributed case transition audit; retry retains identity |
+| INVESTIGATING | AWAITING_HUMAN | OrchestrationService / specialist / Supervisor / reviewer service | Current case/task/evidence context, legal transition, role and lease where required | Attributed case transition audit; retry retains identity |
+| INVESTIGATING | BLOCKED | OrchestrationService / specialist / Supervisor / reviewer service | Current case/task/evidence context, legal transition, role and lease where required | Attributed case transition audit; retry retains identity |
+| INVESTIGATING | ESCALATED | OrchestrationService / specialist / Supervisor / reviewer service | Current case/task/evidence context, legal transition, role and lease where required | Attributed case transition audit; retry retains identity |
+| INVESTIGATING | FAILED | OrchestrationService / specialist / Supervisor / reviewer service | Current case/task/evidence context, legal transition, role and lease where required | Attributed case transition audit; retry retains identity |
+| INVESTIGATING | INVESTIGATION_QUEUED | OrchestrationService / specialist / Supervisor / reviewer service | Current case/task/evidence context, legal transition, role and lease where required | Attributed case transition audit; retry retains identity |
+| AWAITING_DECISION | APPROVED | OrchestrationService / specialist / Supervisor / reviewer service | Current case/task/evidence context, legal transition, role and lease where required | Attributed case transition audit; retry retains identity |
+| AWAITING_DECISION | AWAITING_HUMAN | OrchestrationService / specialist / Supervisor / reviewer service | Current case/task/evidence context, legal transition, role and lease where required | Attributed case transition audit; retry retains identity |
+| AWAITING_DECISION | BLOCKED | OrchestrationService / specialist / Supervisor / reviewer service | Current case/task/evidence context, legal transition, role and lease where required | Attributed case transition audit; retry retains identity |
+| AWAITING_DECISION | ESCALATED | OrchestrationService / specialist / Supervisor / reviewer service | Current case/task/evidence context, legal transition, role and lease where required | Attributed case transition audit; retry retains identity |
+| AWAITING_HUMAN | APPROVED | OrchestrationService / specialist / Supervisor / reviewer service | Current case/task/evidence context, legal transition, role and lease where required | Attributed case transition audit; retry retains identity |
+| AWAITING_HUMAN | BLOCKED | OrchestrationService / specialist / Supervisor / reviewer service | Current case/task/evidence context, legal transition, role and lease where required | Attributed case transition audit; retry retains identity |
+| AWAITING_HUMAN | ESCALATED | OrchestrationService / specialist / Supervisor / reviewer service | Current case/task/evidence context, legal transition, role and lease where required | Attributed case transition audit; retry retains identity |
+| AWAITING_HUMAN | INVESTIGATION_QUEUED | OrchestrationService / specialist / Supervisor / reviewer service | Current case/task/evidence context, legal transition, role and lease where required | Attributed case transition audit; retry retains identity |
+| APPROVED | BLOCKED | ExecutionEngine | Current case/task/evidence context, legal transition, role and lease where required | Attributed case transition audit; retry retains identity |
+| APPROVED | EXECUTING | ExecutionEngine | Current case/task/evidence context, legal transition, role and lease where required | Attributed case transition audit; retry retains identity |
+| APPROVED | EXECUTION_QUEUED | ExecutionEngine | Current case/task/evidence context, legal transition, role and lease where required | Attributed case transition audit; retry retains identity |
+| EXECUTION_QUEUED | BLOCKED | ExecutionEngine | Current case/task/evidence context, legal transition, role and lease where required | Attributed case transition audit; retry retains identity |
+| EXECUTION_QUEUED | EXECUTING | ExecutionEngine | Current case/task/evidence context, legal transition, role and lease where required | Attributed case transition audit; retry retains identity |
+| EXECUTING | ESCALATED | ExecutionEngine | Current case/task/evidence context, legal transition, role and lease where required | Attributed case transition audit; retry retains identity |
+| EXECUTING | FAILED | ExecutionEngine | Current case/task/evidence context, legal transition, role and lease where required | Attributed case transition audit; retry retains identity |
+| EXECUTING | VERIFYING | ExecutionEngine | Current case/task/evidence context, legal transition, role and lease where required | Attributed case transition audit; retry retains identity |
+| VERIFYING | ESCALATED | ExecutionEngine | Current case/task/evidence context, legal transition, role and lease where required | Attributed case transition audit; retry retains identity |
+| VERIFYING | FAILED | ExecutionEngine | Current case/task/evidence context, legal transition, role and lease where required | Attributed case transition audit; retry retains identity |
+| VERIFYING | RESOLVED | ExecutionEngine | Independent source verification; discrepancy-free observed outcome | Attributed case transition audit; retry retains identity |
+
+Terminal states have no outgoing transitions. Scheduling, simulation, HTTP success and worker completion cannot establish RESOLVED. Failure destinations and recovery paths are recorded in the Phase 6/10 tests and headless verification-failure/interruption traces. Detailed trigger-specific evidence is in each trace's audit and task events; the matrix is the allowed service graph, not an invented replacement lifecycle.

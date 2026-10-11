@@ -71,3 +71,11 @@ Thumbs.db
 *.tar.gz
 *.zip
 .*failed_test_db
+
+# Source-only GitHub publication; complete evidence remains in the local archive.
+docs/**/artifacts/
+*.xml
+*.jsonl
+*.bundle
+/phase*.json
+/screenshots/

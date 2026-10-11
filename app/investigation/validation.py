@@ -11,6 +11,8 @@ def validate_output(output, context, retrieved):
         if any(ref not in events for ref in finding.evidence_ids):
             raise EvidenceRejected("fabricated_or_unretrieved_evidence")
         value = finding.model_dump()
+        if finding._normalization:
+            value["normalization"] = finding._normalization
         value["verification"] = "UNVERIFIED_INTERPRETATION"
         if not finding.evidence_ids:
             value["assessment"] = "INSUFFICIENT_EVIDENCE"
@@ -21,7 +23,10 @@ def validate_output(output, context, retrieved):
                 value["assessment"] = "INSUFFICIENT_EVIDENCE"
             else:
                 matches = [type(item) is type(finding.expected_value) and item == finding.expected_value for item in observations]
-                value["assessment"] = "SUPPORTED" if all(matches) else "CONTRADICTED"
+                # Every citation must contain the predicate. Missing fields are
+                # unknown, while an observed unequal value is a contradiction.
+                value["assessment"] = ("CONTRADICTED" if not all(matches) else
+                    "SUPPORTED" if len(observations) == len(finding.evidence_ids) else "INSUFFICIENT_EVIDENCE")
                 value["verification"] = "OBSERVED_FIELD_EQUALITY"
                 # Only the predicate is verified, never arbitrary surrounding model prose.
                 value["verified_observation"] = {"field": finding.field, "expected_value": finding.expected_value,

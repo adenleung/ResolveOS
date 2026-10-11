@@ -1,5 +1,11 @@
 # ResolveOS
 
+Phase 16 first playable Pixel Operations Room is available on the dedicated
+branch. For a database-free visual demonstration, run the frontend and open
+`/pixel-room-preview`. Protected `/pixel-room` consumes existing case/replay APIs.
+See [PHASE16_ACCEPTANCE.md](PHASE16_ACCEPTANCE.md) for commands, actual validation,
+PostgreSQL verification still needed, and the blocked GitHub backup status.
+
 Phases 1–15 are implemented. The protected Next.js operations workbench uses
 actual PostgreSQL evidence across nine modules. Start the accepted isolated demo
 using [RECOVERY_HANDOFF.md](RECOVERY_HANDOFF.md); validation is recorded in
@@ -69,3 +75,20 @@ environment. The verifier creates its own disposable database, migrates and chec
 round trips, runs tests, then removes that database on success. Never run destructive
 integration fixtures directly against development. Existing Phase 9?12 safety tests
 remain required. The PostgreSQL role needs temporary database creation permission.
+
+## Phase 19 independent evaluation
+
+The ten-case synthetic pilot, rules-only baseline and source-grounded scoring are
+documented in [docs/evaluation/phase19/README.md](docs/evaluation/phase19/README.md).
+Run `py -3.13 -m scripts.run_evaluation_benchmark --track offline` with the existing
+local PostgreSQL environment. Each case uses a new disposable database. Live model
+quality remains NOT RUN; offline fixture results do not establish GPT accuracy.
+
+## Phase 20 quality evaluation
+
+Research sufficiency, role/tool coverage, historical replay and independent review
+are described in [Phase 20 acceptance](docs/evaluation/phase20/PHASE20_ACCEPTANCE_REPORT.md).
+See [the evaluation protocol](docs/evaluation/phase20/LIVE_EVALUATION_PROTOCOL.md)
+for verified offline commands and separately authorized bounded live experiments.
+Research verdicts never change native investigation outcomes. New live model
+evaluation is NOT RUN; expert narrative review remains pending.
